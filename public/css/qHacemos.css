@@ -1,0 +1,74 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+#containerFirstSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 90%;
+}
+
+
+#containerFirstSection img{
+    margin-top: 25px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+
+#containerFirstSection h1{
+    color: hsl(216, 80%, 47%);
+}
+
+#containerFirstSection h2{
+    color: hsl(0, 0%, 57%);
+} 
+
+#containerSecondSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#containerSecondSection img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#containerTextSecondSection {
+    max-width: 600px; 
+}
+
+#buttonFinancialStatus{
+    background-color: hsl(216, 80%, 47%);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#buttonFinancialStatus:hover{
+    cursor: pointer;
+    background-color: aqua;
+    color: black;
+}
+
+#buttonFinancialStatus a {
+    color: inherit;           
+    text-decoration: none;    
+    display: block;           
+    width: 100%;
+    height: 100%;
+    text-align: center;       
+}

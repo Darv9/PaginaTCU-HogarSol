@@ -1,0 +1,83 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+main {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    max-width: 1200px; 
+    padding: 30px; 
+    border-radius: 8px; 
+}
+
+article, section {
+    flex: 1;
+    padding: 20px;
+}
+
+article {
+    margin-right: 150px; /* Espacio entre article y section */
+    border-radius: 8px; /* Bordes redondeados */
+    text-align: center;
+}
+
+article h2 {
+    color: hsl(216, 80%, 47%);
+}
+
+section {
+    margin-left: 10px; /* Espacio entre article y section */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-top: 40px;
+    text-align: center;
+}
+
+section h2{
+    color: hsl(216, 80%, 47%);
+}
+
+#Image img{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+
+#juntaDirectiva {
+    clear: both; /* Asegura que esté debajo de main */
+    text-align: center;
+}
+
+#juntaDirectiva ul {
+    list-style-position: inside; /* Cambia la posición de los puntos */
+    padding: 0; 
+    margin: 0; 
+}
+
+#juntaDirectiva h2{
+    color: hsl(216, 80%, 47%);
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        flex-direction: column; /* Cambia a columnas en pantallas pequeñas */
+    }
+    article, section {
+        width: 100%;
+        margin: 0; /* Elimina los márgenes laterales en pantallas pequeñas */
+        margin-bottom: 10px; /* Agrega un poco de espacio vertical */
+    }
+    section img {
+        max-width: 375px; /* Mantiene el tamaño de la imagen */
+    }
+}

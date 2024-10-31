@@ -1,45 +1,36 @@
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
 footer {
-    display: flex; /* Utilizamos flexbox */
-    justify-content: center; /* Centrar los elementos en el contenedor */
-    align-items: center; /* Alineamos verticalmente en el centro */
-    padding: 20px; /* Espaciado interno */
-    background-color: hsl(145, 89%, 65%); /* Color de fondo del footer */
+    background-color: #333; 
+    color: #fff; 
+    padding: 20px; 
+    text-align: center; 
+    font-size: 14px;
+    position: relative;
+    bottom: 0;
 }
 
-#content {
-    flex: 1;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.information-footer {
-    margin-right: 250px; /* Espacio a la derecha para separarlo del div de redes sociales */
-    text-align: center;
-    color: hsl(0, 2%, 24%);
+.information-footer p {
+    margin: 5px 0; 
+    color: #ccc; 
 }
 
 .socialmedia-facebook {
-    display: flex; /* Para alinear el texto y el icono en línea */
-    align-items: center; /* Alineamos verticalmente en el centro */
-    text-align: center; /* Alineamos el texto al centro */
-    color: hsl(0, 2%, 24%);
+    margin-top: 10px; 
+}
+
+.socialmedia-facebook p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
 }
 
 .socialmedia-facebook a {
-    margin-left: 10px; /* Espacio entre el texto y el ícono */
-    font-size: 24px; /* Tamaño del icono de Facebook */
-    color: hsl(200, 100%, 40%); /* Color del icono */
+    color: #ccc;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10px;
+    transition: color 0.3s ease;
 }
 
 .socialmedia-facebook a:hover {
-    color: hsl(200, 100%, 60%); /* Color del icono al pasar el mouse */
+    color: #fff; 
 }

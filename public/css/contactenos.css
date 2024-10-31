@@ -1,0 +1,86 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+#headerContactInfo{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 90%;
+    align-items: center;
+    justify-content: center;
+}
+
+#headerContactInfo h1{
+    color: hsl(216, 80%, 47%);
+}
+
+#containerFirstSection-contactInfo{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    max-width: 90%;
+    margin: auto; 
+    justify-content: space-evenly;
+}
+
+#contactInfo-Telephone{
+    text-align: center;
+}
+
+#contactInfo-Telephone h2{
+    color: hsl(44, 84%, 64%);
+}
+
+#contactInfo-Telephone ul{
+    margin-right: 50px;
+}
+
+#contactInfo-Mail{
+    text-align: center;
+}
+
+#contactInfo-Mail h2{
+    color: hsl(44, 84%, 64%);
+}
+
+#contactInfo-addressPostalCode{
+    text-align: center;
+}
+#contactInfo-addressPostalCode h2{
+    color: hsl(44, 84%, 64%);
+}
+
+#contacSocialmedia-facebook h2{
+    color: hsl(44, 84%, 64%);
+}
+
+
+#contacSocialmedia-facebook a {
+    color: hsl(216, 80%, 47%);
+    text-decoration: none;
+    font-size: 70px;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+}
+
+#contacSocialmedia-facebook a:hover {
+    color:hsla(60, 56%, 91%, 0.747); 
+}
+
+#mapSection{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    max-width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}

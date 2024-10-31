@@ -1,24 +1,27 @@
-header{
+header {
     align-items: flex-start;
     display: flex;
     justify-content: space-between;
-} 
+}
 
-.navbar{
+.navbar {
+    width: 90%;
     margin-top: 25px;
     background-color: hsla(0, 7%, 92%, 0.884);
     border: 1px solid hsl(0, 0%, 57%);
     border-radius: 5px;
-    text-align: center;
-}
-.navbar ul{
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
+    margin: auto;
 }
 
-.navbar a{
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    justify-content: center; 
+}
+
+.navbar a {
     color: hsla(0, 3%, 38%, 0.979);
     text-decoration: none;
     padding: 15px;
@@ -26,22 +29,21 @@ header{
     text-align: center;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     background-color: hsla(0, 0%, 9%, 0.204);
 }
 
-.navbar li{
-    float: left;
+.navbar li {
     margin-left: 5px;
     margin-right: 5px;
 }
 
-.logo img{
-    height: 150px;
-    width: 150px;
+.logo img {
+    max-width: 100%;
 }
 
-.description{
+
+.description {
     text-align: center;
     flex-grow: 1;
     margin: auto;
@@ -52,19 +54,19 @@ header{
     margin-right: 10px;
 }
 
-.description h1{
+.description h1 {
     color: hsl(0, 76%, 61%);
 }
 
-.description h2{
+.description h2 {
     color: hsl(44, 84%, 64%);
 }
 
-.description h4{
+.description h4 {
     color: hsl(216, 80%, 47%);
 }
 
-.login-dropdown button{
+.login-dropdown button {
     background-color: hsl(0, 76%, 61%);
     color: white;
     padding: 10px 15px;
@@ -72,14 +74,15 @@ header{
     margin-top: 25px;
 }
 
-.login-dropdown a{
+.login-dropdown a {
     display: block;
     color: black;
     text-decoration: none;
     padding: 10px 15px;
+    position: relative;
 }
 
-.login-dropdown .content-login-dropdown{
+.login-dropdown .content-login-dropdown {
     background-color: hsl(44, 84%, 64%);
     position: absolute;
     min-width: 100px;
@@ -88,15 +91,14 @@ header{
     right: 0;
 }
 
-.login-dropdown:hover .content-login-dropdown{
+.login-dropdown:hover .content-login-dropdown {
     display: block;
-
 }
 
-.login-dropdown:hover button{
+.login-dropdown:hover button {
     background-color: hsl(0, 76%, 61%);
 }
 
-.login-dropdown a:hover{
+.login-dropdown a:hover {
     background-color: hsla(0, 0%, 100%, 0.802);
 }

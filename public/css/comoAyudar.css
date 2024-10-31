@@ -1,0 +1,103 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+#firstSectionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+}
+
+#firstSectionContainer img{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+#firstSectionContainer h1{
+    color: hsl(216, 80%, 47%);
+}
+
+#secondSectionContainer{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#donationSecondSectionContainer{
+    margin-right: 25px;
+}
+
+#donationSecondSectionContainer ul{
+    list-style-position: inside;
+}
+
+#donationSecondSectionContainer h2{
+    color: hsl(0, 76%, 61%);
+}
+
+#donationSecondSectionContainer img{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+#volunteerSectionContainer{
+    margin-left: 25px;
+}
+
+#volunteerSectionContainer h2{
+    color: hsl(0, 76%, 61%);
+}
+
+#volunteerSectionContainer img{
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+#volunteerSectionContainer button{
+    background-color: hsl(216, 80%, 47%);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#volunteerSectionContainer button:hover{
+    cursor: pointer;
+    background-color: aqua;
+    color: black;
+}
+
+#volunteerSectionContainer button a {
+    color: inherit;           
+    text-decoration: none;    
+    display: block;           
+    width: 100%;
+    height: 100%;
+    text-align: center;       
+}
+
+#videoSecondSectionContainer{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#videoSecondSectionContainer iframe{
+    margin: auto;
+    margin-bottom: 25px;
+}
