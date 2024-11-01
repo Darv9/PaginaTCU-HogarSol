@@ -1,20 +1,31 @@
-footer {
-    background-color: #333; 
-    color: #fff; 
-    padding: 20px; 
-    text-align: center; 
-    font-size: 14px;
-    position: relative;
-    bottom: 0;
+* {
+    box-sizing: border-box;
 }
 
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    width: 100%; /* Asegura que el footer ocupe el 100% del ancho */
+    margin: 0; /* Elimina el centrado automático para ocupar todo el ancho */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 .information-footer p {
-    margin: 5px 0; 
-    color: #ccc; 
+    margin: 5px 0;
+    color: #ccc;
 }
 
 .socialmedia-facebook {
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 .socialmedia-facebook p {
@@ -32,5 +43,40 @@ footer {
 }
 
 .socialmedia-facebook a:hover {
-    color: #fff; 
+    color: #fff;
+}
+
+/* Make footer stick to the bottom of the page */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body > footer {
+    margin-top: auto;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px;
+        font-size: 12px;
+    }
+
+    .socialmedia-facebook a {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .socialmedia-facebook a {
+        font-size: 16px;
+    }
 }

@@ -1,74 +1,194 @@
 html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
-    flex: 1;
+  flex: 1;
+  width: 100%; /* Cambiar a 100% para ocupar todo el ancho */
+  padding: 0 15px; /* Espaciado lateral */
 }
 
-#containerFirstSection{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 90%;
+#containerFirstSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+  margin: auto; /* Centrar el contenedor */
 }
 
-
-#containerFirstSection img{
-    margin-top: 25px;
-    max-width: 100%;
-    border-radius: 10px;
+#containerFirstSection img {
+  margin-top: 25px;
+  max-width: 100%;
+  height: auto; /* Mantener la proporción de la imagen */
+  border-radius: 10px;
 }
 
-
-#containerFirstSection h1{
-    color: hsl(216, 80%, 47%);
+#containerFirstSection h1 {
+  color: hsl(216, 80%, 47%);
 }
 
-#containerFirstSection h2{
-    color: hsl(0, 0%, 57%);
+#containerFirstSection h2 {
+  color: hsl(0, 0%, 57%);
 } 
 
-#containerSecondSection{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+#containerSecondSection {
+  display: flex;
+  flex-direction: column; /* Cambiar a columna para mejor disposición en dispositivos pequeños */
+  align-items: center; /* Centrar contenido */
+  justify-content: center;
+  text-align: center;
+  max-width: 90%; /* Maximo ancho para dispositivos */
+  margin: auto; /* Centrar el contenedor */
+  padding: 20px; /* Espacio interior para asegurarte de que no esté pegado a los bordes */
 }
 
 #containerSecondSection img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 #containerTextSecondSection {
-    max-width: 600px; 
+  max-width: 600px; 
+  margin: 20px 0; /* Espacio entre el texto y otros elementos */
 }
 
-#buttonFinancialStatus{
-    background-color: hsl(216, 80%, 47%);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
+.download-button {
+  display: inline-block;
+  margin-top: 20px; /* Espacio superior para el botón */
+  z-index: 10; /* Asegura que el botón esté por encima de otros elementos */
 }
 
-#buttonFinancialStatus:hover{
-    cursor: pointer;
-    background-color: aqua;
-    color: black;
+.button {
+  --width: 100px;
+  --height: 35px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #1163ff;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.45em;
+  font-family: "Arial";
+  transition: background 0.3s;
+  display: flex; /* Asegura que el contenido del botón esté correctamente alineado */
+  align-items: center; /* Centra el contenido verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  opacity: 1; /* Asegura que el botón sea visible */
 }
 
-#buttonFinancialStatus a {
-    color: inherit;           
-    text-decoration: none;    
-    display: block;           
-    width: 100%;
-    height: 100%;
-    text-align: center;       
+.button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: var(--tooltip-color);
+  font-size: 0.9rem;
+  color: #111;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: var(--tooltip-color);
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button::after, .button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper, .text, .icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0;
+}
+
+.text, .icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.button:hover {
+  background: #6c18ff;
+}
+
+.button:hover .text {
+  top: -100%;
+}
+
+.button:hover .icon {
+  top: 0;
+}
+
+.button:hover:before, .button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+/* Media queries para ajustes responsivos */
+@media (max-width: 768px) {
+  #containerSecondSection {
+      flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+  }
+
+  #containerTextSecondSection {
+      max-width: 90%; /* Aumenta el ancho máximo para pantallas pequeñas */
+  }
+
+  .button {
+      --width: 80%; /* Botón más grande en pantallas pequeñas */
+      height: 45px; /* Aumentar la altura si es necesario */
+  }
 }

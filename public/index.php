@@ -14,7 +14,7 @@
     <?php 
         include("../public/header-footer/header.html"); 
     ?>
-    <!-- Todo el contenido de la pagina -->
+    <!-- Todo el contenido de la página -->
     <div class="content">
         <section id="gallery">
             <img src="../public/images/indexImage1.png" alt="indexImage1">

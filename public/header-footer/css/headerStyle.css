@@ -1,32 +1,42 @@
-header {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
+* {
+    box-sizing: border-box;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrado horizontal */
+    padding: 10px;
+    width: 100%; /* Asegura que el header ocupe el 100% del ancho */
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado en la página */
+}
+
+
 .navbar {
-    width: 90%;
-    margin-top: 25px;
+    width: 100%; /* Mantén esto */
+    margin: 25px auto;
     background-color: hsla(0, 7%, 92%, 0.884);
     border: 1px solid hsl(0, 0%, 57%);
     border-radius: 5px;
-    margin: auto;
 }
+
 
 .navbar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .navbar a {
     color: hsla(0, 3%, 38%, 0.979);
     text-decoration: none;
     padding: 15px;
-    display: block;
     text-align: center;
+    display: block;
 }
 
 .navbar a:hover {
@@ -34,36 +44,37 @@ header {
 }
 
 .navbar li {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
 }
 
 .logo img {
-    max-width: 100%;
+    max-width: 100px;
+    height: auto;
 }
-
 
 .description {
     text-align: center;
     flex-grow: 1;
-    margin: auto;
-}
-
-.login-dropdown {
-    position: relative;
-    margin-right: 10px;
+    margin: 10px;
 }
 
 .description h1 {
     color: hsl(0, 76%, 61%);
+    margin: 0;
 }
 
 .description h2 {
     color: hsl(44, 84%, 64%);
+    margin: 0;
 }
 
 .description h4 {
     color: hsl(216, 80%, 47%);
+    margin: 0;
+}
+
+.login-dropdown {
+    position: relative;
 }
 
 .login-dropdown button {
@@ -71,15 +82,7 @@ header {
     color: white;
     padding: 10px 15px;
     cursor: pointer;
-    margin-top: 25px;
-}
-
-.login-dropdown a {
-    display: block;
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
-    position: relative;
+    margin-top: 10px;
 }
 
 .login-dropdown .content-login-dropdown {
@@ -95,10 +98,49 @@ header {
     display: block;
 }
 
-.login-dropdown:hover button {
-    background-color: hsl(0, 76%, 61%);
+/* Responsive styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .description h1 {
+        font-size: 1.2em;
+    }
+
+    .description h2, .description h4 {
+        font-size: 1em;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .navbar a {
+        padding: 10px;
+    }
+
+    .login-dropdown button {
+        width: 100%;
+    }
 }
 
-.login-dropdown a:hover {
-    background-color: hsla(0, 0%, 100%, 0.802);
+@media (max-width: 480px) {
+    .logo img {
+        max-width: 80px;
+    }
+
+    .description h1 {
+        font-size: 1em;
+    }
+
+    .description h2, .description h4 {
+        font-size: 0.9em;
+    }
+
+    .navbar a {
+        padding: 8px;
+        font-size: 0.9em;
+    }
 }

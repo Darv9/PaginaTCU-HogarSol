@@ -27,9 +27,7 @@
             <section>
                 <div id="sectionMission">
                     <h2>Misión</h2>
-                    <p>"Dar atención integral a niños en situación de riesgo social,
-                        en un ambiente familiar con el apoyo conjunto de la comunidad e instituciones públicas
-                    </p>
+                    <p>"Dar atención integral a niños en situación de riesgo social, en un ambiente familiar con el apoyo conjunto de la comunidad e instituciones públicas."</p>
                 </div>
             </section>
         </main>

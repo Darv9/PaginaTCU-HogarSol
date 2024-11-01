@@ -7,46 +7,100 @@ html, body {
 
 .content {
     flex: 1;
+    width: 100%; 
+    padding: 0 15px; 
 }
 
-section{
+section#gallery {
     display: flex;
-    width: 800px;
+    width: 800px; 
     height: 430px;
     margin: auto;
     margin-top: 15px;
+    overflow: hidden;
 }
 
-section img{
+section#gallery img {
     width: 0;
     flex-grow: 1;
     object-fit: cover;
-    opacity: .8;
-    transition: .5 ease;
+    opacity: 0.8;
+    transition: 0.5s ease;
 }
 
-section img:hover{
+section#gallery img:hover {
     cursor: crosshair;
     width: 300px;
     opacity: 1;
     filter: contrast(120%);
 }
 
-h1{
+h1 {
     color: hsla(0, 3%, 38%, 0.979);
     text-align: center;
-    margin: auto;
-    margin-top: 15px;
+    margin: 10px auto;
+    font-size: 1.5em;
 }
 
-#donaciones{
+#donaciones {
     display: flex;
-    margin: 15px auto;
     justify-content: space-around;
+    align-items: center;
+    margin: 15px auto;
+    gap: 10px; 
+    flex-wrap: wrap; 
 }
 
-#donaciones img{
-    margin-top: 15px;
-    max-width: 100%;
+#donaciones img {
+    width: 100%;
+    max-width: 300px; 
     height: auto;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+}
+
+#donaciones img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+    section#gallery {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap; 
+        gap: 5px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+}
+
+
+@media (max-width: 768px) {
+    section#gallery {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    #donaciones {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1em;
+    }
+
+    section#gallery img,
+    #donaciones img {
+        width: 100%; 
+        max-width: none; 
+    }
 }
