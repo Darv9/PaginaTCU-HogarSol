@@ -5,16 +5,16 @@
 header {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrado horizontal */
+    justify-content: center; 
     padding: 10px;
-    width: 100%; /* Asegura que el header ocupe el 100% del ancho */
-    max-width: 1200px; /* Ancho máximo */
-    margin: 0 auto; /* Centrado en la página */
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
 
 .navbar {
-    width: 100%; /* Mantén esto */
+    width: 100%; 
     margin: 25px auto;
     background-color: hsla(0, 7%, 92%, 0.884);
     border: 1px solid hsl(0, 0%, 57%);

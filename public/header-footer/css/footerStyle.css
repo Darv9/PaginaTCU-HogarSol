@@ -9,8 +9,8 @@ footer {
     text-align: center;
     font-size: 14px;
     position: relative;
-    width: 100%; /* Asegura que el footer ocupe el 100% del ancho */
-    margin: 0; /* Elimina el centrado automático para ocupar todo el ancho */
+    width: 100%; 
+    margin: 0; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,7 @@ footer {
     color: #fff;
 }
 
-/* Make footer stick to the bottom of the page */
+
 body, html {
     height: 100%;
     margin: 0;
@@ -58,7 +58,7 @@ body > footer {
     margin-top: auto;
 }
 
-/* Responsive design adjustments */
+
 @media (max-width: 768px) {
     footer {
         padding: 15px;

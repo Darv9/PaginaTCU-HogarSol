@@ -7,8 +7,8 @@ html, body {
 
 .content {
   flex: 1;
-  width: 100%; /* Cambiar a 100% para ocupar todo el ancho */
-  padding: 0 15px; /* Espaciado lateral */
+  width: 100%; 
+  padding: 0 15px; 
 }
 
 #containerFirstSection {
@@ -17,13 +17,13 @@ html, body {
   align-items: center;
   text-align: center;
   max-width: 90%;
-  margin: auto; /* Centrar el contenedor */
+  margin: auto; 
 }
 
 #containerFirstSection img {
   margin-top: 25px;
   max-width: 100%;
-  height: auto; /* Mantener la proporción de la imagen */
+  height: auto; 
   border-radius: 10px;
 }
 
@@ -37,13 +37,13 @@ html, body {
 
 #containerSecondSection {
   display: flex;
-  flex-direction: column; /* Cambiar a columna para mejor disposición en dispositivos pequeños */
-  align-items: center; /* Centrar contenido */
+  flex-direction: column; 
+  align-items: center; 
   justify-content: center;
   text-align: center;
-  max-width: 90%; /* Maximo ancho para dispositivos */
-  margin: auto; /* Centrar el contenedor */
-  padding: 20px; /* Espacio interior para asegurarte de que no esté pegado a los bordes */
+  max-width: 90%; 
+  margin: auto; 
+  padding: 20px; 
 }
 
 #containerSecondSection img {
@@ -54,18 +54,20 @@ html, body {
 
 #containerTextSecondSection {
   max-width: 600px; 
-  margin: 20px 0; /* Espacio entre el texto y otros elementos */
+  margin: 20px 0;
 }
 
 .download-button {
   display: inline-block;
-  margin-top: 20px; /* Espacio superior para el botón */
-  z-index: 10; /* Asegura que el botón esté por encima de otros elementos */
+  margin-top: 20px; 
+  z-index: 10;
 }
 
 .button {
   --width: 100px;
   --height: 35px;
+  min-width: 100px; 
+  min-height: 35px; 
   --tooltip-height: 35px;
   --tooltip-width: 90px;
   --gap-between-tooltip-to-button: 18px;
@@ -79,10 +81,10 @@ html, body {
   border-radius: 0.45em;
   font-family: "Arial";
   transition: background 0.3s;
-  display: flex; /* Asegura que el contenido del botón esté correctamente alineado */
-  align-items: center; /* Centra el contenido verticalmente */
-  justify-content: center; /* Centra el contenido horizontalmente */
-  opacity: 1; /* Asegura que el botón sea visible */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  opacity: 1; 
 }
 
 .button::before {
@@ -177,18 +179,18 @@ html, body {
   bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
 }
 
-/* Media queries para ajustes responsivos */
+
 @media (max-width: 768px) {
   #containerSecondSection {
-      flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+      flex-direction: column; 
   }
 
   #containerTextSecondSection {
-      max-width: 90%; /* Aumenta el ancho máximo para pantallas pequeñas */
+      max-width: 90%; 
   }
 
   .button {
-      --width: 80%; /* Botón más grande en pantallas pequeñas */
-      height: 45px; /* Aumentar la altura si es necesario */
+      --width: 80%; 
+      height: 45px; 
   }
 }

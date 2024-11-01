@@ -7,7 +7,7 @@ html, body {
 
 .content {
     flex: 1;
-    width: 95%; /* Aumentar el ancho del contenido a un 95% */
+    width: 95%; 
     max-width: 1200px;
     margin: 0 auto; 
 }
@@ -15,20 +15,20 @@ html, body {
 main {
     display: flex;
     justify-content: space-between; 
-    padding: 20px; /* Reducir padding para que no quede tan ancho */
+    padding: 20px; 
     border-radius: 8px; 
 }
 
 article, section {
     flex: 1;
-    padding: 10px; /* Reducir padding en los elementos */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    padding: 10px; 
+    box-sizing: border-box;
 }
 
 article {
-    margin-right: 10px; /* Espacio reducido entre article y section */
-    border-radius: 8px; /* Bordes redondeados */
-    text-align: left; /* Cambiado a left para mejor legibilidad */
+    margin-right: 10px; 
+    border-radius: 8px; 
+    text-align: left; 
 }
 
 article h2 {
@@ -36,9 +36,9 @@ article h2 {
 }
 
 section {
-    margin-left: 10px; /* Espacio reducido entre article y section */
-    border-radius: 8px; /* Bordes redondeados */
-    margin-top: 20px; /* Reducir el margen superior para mejor distribución */
+    margin-left: 10px; 
+    border-radius: 8px; 
+    margin-top: 20px; 
     text-align: center;
 }
 
@@ -47,18 +47,18 @@ section h2 {
 }
 
 #Image img {
-    max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 100%; 
+    height: auto;
     border-radius: 10px;
 }
 
 #juntaDirectiva {
-    clear: both; /* Asegura que esté debajo de main */
+    clear: both;
     text-align: center;
 }
 
 #juntaDirectiva ul {
-    list-style-position: inside; /* Cambia la posición de los puntos */
+    list-style-position: inside; 
     padding: 0; 
     margin: 0; 
 }
@@ -69,17 +69,17 @@ section h2 {
 
 @media screen and (max-width: 600px) {
     main {
-        flex-direction: column; /* Cambia a columnas en pantallas pequeñas */
+        flex-direction: column; 
     }
     article, section {
         width: 100%;
-        margin: 0; /* Elimina los márgenes laterales en pantallas pequeñas */
-        margin-bottom: 10px; /* Agrega un poco de espacio vertical */
-        padding: 10px; /* Mantiene el padding reducido en pantallas pequeñas */
+        margin: 0;
+        margin-bottom: 10px; 
+        padding: 10px; 
     }
     
     #Image img {
-        max-width: 100%; /* Asegura que la imagen no exceda el ancho de su contenedor */
-        height: auto; /* Mantiene la proporción de la imagen */
+        max-width: 100%;
+        height: auto;
     }
 }

@@ -9,7 +9,7 @@ html, body {
     flex: 1;
 }
 
-#headerContactInfo{
+#headerContactInfo {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -18,50 +18,51 @@ html, body {
     justify-content: center;
 }
 
-#headerContactInfo h1{
+#headerContactInfo h1 {
     color: hsl(216, 80%, 47%);
 }
 
-#containerFirstSection-contactInfo{
+#containerFirstSection-contactInfo {
     display: flex;
-    align-items: center;
+    align-items: flex-start; 
     text-align: center;
     max-width: 90%;
     margin: auto; 
     justify-content: space-evenly;
+    flex-wrap: wrap; 
 }
 
-#contactInfo-Telephone{
+#contactInfo-Telephone, 
+#contactInfo-Mail, 
+#contacSocialmedia-facebook {
     text-align: center;
+    flex: 1; 
+    min-width: 250px; 
+    box-sizing: border-box; 
+    padding: 10px; 
 }
 
-#contactInfo-Telephone h2{
-    color: hsl(44, 84%, 64%);
+#contactInfo-Telephone h2, 
+#contactInfo-Mail h2, 
+#contacSocialmedia-facebook h2 {
+    color: hsl(44, 84%, 64%); 
 }
 
-#contactInfo-Telephone ul{
-    margin-right: 50px;
+#contactInfo-Telephone ul {
+    margin: 0;
+    padding: 0; 
+    list-style: none; 
 }
 
-#contactInfo-Mail{
+#contactInfo-addressPostalCode {
     text-align: center;
+    margin: auto; 
+    max-width: 90%;
 }
 
-#contactInfo-Mail h2{
-    color: hsl(44, 84%, 64%);
+#contactInfo-addressPostalCode h2 {
+    color: hsl(44, 84%, 64%); 
 }
-
-#contactInfo-addressPostalCode{
-    text-align: center;
-}
-#contactInfo-addressPostalCode h2{
-    color: hsl(44, 84%, 64%);
-}
-
-#contacSocialmedia-facebook h2{
-    color: hsl(44, 84%, 64%);
-}
-
 
 #contacSocialmedia-facebook a {
     color: hsl(216, 80%, 47%);
@@ -72,10 +73,10 @@ html, body {
 }
 
 #contacSocialmedia-facebook a:hover {
-    color:hsla(60, 56%, 91%, 0.747); 
+    color: hsla(60, 56%, 91%, 0.747); 
 }
 
-#mapSection{
+#mapSection {
     display: flex;
     flex-direction: row;
     margin: auto;
@@ -83,4 +84,44 @@ html, body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+}
+
+iframe {
+    width: 100%; 
+    height: 450px; 
+}
+
+
+@media (max-width: 768px) {
+    #containerFirstSection-contactInfo {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    #contactInfo-addressPostalCode {
+        text-align: center; 
+    }
+
+    #mapSection {
+        margin: auto;
+        justify-content: center;
+        max-width: 100%; 
+    }
+
+    iframe {
+        height: 300px; 
+    }
+}
+
+@media (max-width: 480px) {
+    #contactInfo-Telephone h2, 
+    #contactInfo-Mail h2, 
+    #contactInfo-addressPostalCode h2, 
+    #contacSocialmedia-facebook h2 {
+        font-size: 1.2em; 
+    }
+
+    #contacSocialmedia-facebook a {
+        font-size: 50px; 
+    }
 }
