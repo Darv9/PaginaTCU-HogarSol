@@ -79,8 +79,8 @@ h1 {
     }
 
     section#gallery img {
-        width: calc(33.33% - 10px); /* Tres imágenes por fila con espacio */
-        height: auto; /* Mantiene la proporción */
+        width: calc(33.33% - 10px); 
+        height: auto; 
     }
 
     h1 {
@@ -95,8 +95,8 @@ h1 {
     }
 
     section#gallery img {
-        width: calc(50% - 10px); /* Dos imágenes por fila */
-        height: auto; /* Mantiene la proporción */
+        width: calc(50% - 10px); 
+        height: auto; 
     }
 
     h1 {
@@ -115,7 +115,7 @@ h1 {
     }
 
     section#gallery img {
-        width: 100%; /* Una imagen por fila */
+        width: 100%; 
         max-width: none; 
     }
 

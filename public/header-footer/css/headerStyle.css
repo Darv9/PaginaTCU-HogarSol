@@ -98,6 +98,17 @@ header {
     display: block;
 }
 
+.content-login-dropdown a {
+    color: inherit; 
+    text-decoration: none; 
+    padding: 10px; 
+    display: block; 
+}
+
+.content-login-dropdown a:hover {
+    background-color: hsla(0, 0%, 9%, 0.204); 
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     header {
