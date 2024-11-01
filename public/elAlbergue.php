@@ -6,7 +6,7 @@
     <title>Asociación Infantil Hogar Sol</title>
     <link rel="stylesheet" href="../public/header-footer/css/headerStyle.css">
     <link rel="stylesheet" href="../public/header-footer/css/footerStyle.css">
-    <link rel="stylesheet" href="../public/css//elAlbergue.css">
+    <link rel="stylesheet" href="../public/css/elAlbergue.css">
     <script src="https://kit.fontawesome.com/186b29df68.js" crossorigin="anonymous"></script>
 </head>
 <body>

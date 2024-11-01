@@ -1,8 +1,14 @@
+@font-face {
+    src: url(../fonts/NotoSans-VariableFont_wdth\,wght.ttf);
+    font-family: NotoSans-VariableFont;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
+    font-family: NotoSans-VariableFont;
 }
 
 .content {
@@ -23,12 +29,12 @@ article, section {
     flex: 1;
     padding: 10px; 
     box-sizing: border-box;
+    text-align: center; 
 }
 
 article {
-    margin-right: 10px; 
+    margin-right: 20px; 
     border-radius: 8px; 
-    text-align: left; 
 }
 
 article h2 {
@@ -36,10 +42,9 @@ article h2 {
 }
 
 section {
-    margin-left: 10px; 
+    margin-left: 20px; 
     border-radius: 8px; 
     margin-top: 20px; 
-    text-align: center;
 }
 
 section h2 {

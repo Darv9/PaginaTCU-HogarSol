@@ -1,14 +1,21 @@
+@font-face {
+    src: url(../fonts/NotoSans-VariableFont_wdth\,wght.ttf);
+    font-family: NotoSans-VariableFont;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
+    font-family: NotoSans-VariableFont;
 }
 
 .content {
     flex: 1;
-    width: 100%; 
-    padding: 0 15px; 
+    width: 95%; 
+    max-width: 1200px;
+    margin: 0 auto; 
 }
 
 section#gallery {
@@ -71,16 +78,25 @@ h1 {
         gap: 5px;
     }
 
+    section#gallery img {
+        width: calc(33.33% - 10px); /* Tres imágenes por fila con espacio */
+        height: auto; /* Mantiene la proporción */
+    }
+
     h1 {
         font-size: 1.2em;
     }
 }
 
-
 @media (max-width: 768px) {
     section#gallery {
         flex-direction: row;
         gap: 5px;
+    }
+
+    section#gallery img {
+        width: calc(50% - 10px); /* Dos imágenes por fila */
+        height: auto; /* Mantiene la proporción */
     }
 
     h1 {
@@ -98,7 +114,11 @@ h1 {
         font-size: 1em;
     }
 
-    section#gallery img,
+    section#gallery img {
+        width: 100%; /* Una imagen por fila */
+        max-width: none; 
+    }
+
     #donaciones img {
         width: 100%; 
         max-width: none; 

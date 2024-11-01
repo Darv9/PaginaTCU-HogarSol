@@ -1,8 +1,14 @@
+@font-face {
+  src: url(../fonts/NotoSans-VariableFont_wdth\,wght.ttf);
+  font-family: NotoSans-VariableFont;
+}
+
 html, body {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
+  font-family: NotoSans-VariableFont;
 }
 
 .content {
@@ -64,8 +70,8 @@ html, body {
 }
 
 .button {
-  --width: 100px;
-  --height: 35px;
+  --width: 120px;
+  --height: 45px;
   min-width: 100px; 
   min-height: 35px; 
   --tooltip-height: 35px;
