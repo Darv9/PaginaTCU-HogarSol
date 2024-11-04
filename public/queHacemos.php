@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../public/header-footer/css/footerStyle.css">
     <link rel="stylesheet" href="../public/css/qHacemos.css">
     <script src="https://kit.fontawesome.com/186b29df68.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../public/js/scriptNewsletter.js"></script>
 </head>
 <body>
     <!-- Nos traemos el header prefab -->
@@ -51,6 +53,32 @@
                 </a>      
             </div>
         </div>
+        <div id="registerNewsletter">
+            <h2>Regístrese para nuestro boletín informativo</h2>
+            <p>Esta es una nueva función que tenemos disponible, en donde los usuarios podrán registrarse para el envío de noticias acerca del hogar.</p>
+            <form id="newsletterForm">
+                <label for="emailNewsletter">Correo Electrónico</label>
+                <input type="email" name="emailNewsletter" id="emailNewsletter" required>
+                <div id="emailError" class="error-message" style="color: red;"></div> <!-- Contenedor para mensajes de error -->
+
+                <label for="usernameNewsletter">Nombre del Usuario</label>
+                <input type="text" name="usernameNewsletter" id="usernameNewsletter" required>
+                <div id="usernameError" class="error-message" style="color: red;"></div>
+
+                <label for="userlastname1Newsletter">Primer Apellido</label>
+                <input type="text" name="userlastname1Newsletter" id="userlastname1Newsletter" required>
+                <div id="lastname1Error" class="error-message" style="color: red;"></div>
+
+                <label for="userlastname2Newsletter">Segundo Apellido</label>
+                <input type="text" name="userlastname2Newsletter" id="userlastname2Newsletter" required>
+                <div id="lastname2Error" class="error-message" style="color: red;"></div>
+
+                <input type="hidden" name="action" value="registerNewsletter">
+
+                <button type="submit">Confirmar Registro</button>
+            </form>
+        </div>
+
     </div>
     <!-- Nos tramos el footer prefab -->
     <?php 

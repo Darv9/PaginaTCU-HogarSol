@@ -6,6 +6,7 @@ require '../PHPMailer/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+
 class NewsLetterMail {
     public function sendConfirmationNewsletterMail($email, $username) {
         $mail = new PHPMailer(true);
@@ -26,13 +27,26 @@ class NewsLetterMail {
 
             // Contenido del correo
             $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8'; // Establece la codificación UTF-8
             $mail->Subject = 'Confirmación de Registro para el Boletín Informativo';
-            $mail->Body    = 'Buenas' .$username. 'Le agradecemos su registro para el boletín informativo';
+
+            // Cargar la plantilla
+            $template = file_get_contents('../mail/templates/newsletterRegister.html'); // Ruta a tu plantilla
+            $body = str_replace(['{{username}}'], [$username], $template); // Reemplazar variables en la plantilla
+            $mail->Body = $body;
+
+            try {
+                $mail->addEmbeddedImage(__DIR__ . '/../../public/images/logo.png', 'logo_cid');
+            } catch (Exception $e) {
+                echo 'Error al adjuntar la imagen: ' . $e->getMessage();
+            }
+            
 
             $mail->send();
-            echo 'El correo de confirmación ha sido enviado';
+            return true; // Envío exitoso
         } catch (Exception $e) {
-            echo "El correo no se pudo enviar. Mailer Error: {$mail->ErrorInfo}";
+            // Maneja el error, loguea si es necesario
+            return false; // Indica que hubo un problema
         }
     }
 }

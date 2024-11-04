@@ -1,21 +1,33 @@
 <?php
-require_once '../controllers/newsletterController.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 header('Content-Type: application/json');
 
-$newsletterController = new NewsletterController();
+require_once '../controllers/newsletterController.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'];
+$response = ['status' => 'error', 'message' => 'Acción no válida'];
 
-    if ($action === 'registerNewsletter') {
-        $userMail = $_POST['emailNewsletter'];
-        $userName = $_POST['usernameNewsletter'];
-        $userLastname1 = $_POST['userlastname1Newsletter'];
-        $userLastname2 = $_POST['userlastname2Newsletter'];
-        $success = $newsletterController->registerNewsletter($userName, $userLastname1, $userLastname2, $userMail);
-        echo json_encode(['status' => $success ? 'success' : 'error']);
+if (isset($_POST['action']) && $_POST['action'] === 'registerNewsletter') {
+    if (isset($_POST['emailNewsletter'], $_POST['usernameNewsletter'], $_POST['userlastname1Newsletter'], $_POST['userlastname2Newsletter'])) {
+        $email = $_POST['emailNewsletter'];
+        $username = $_POST['usernameNewsletter'];
+        $lastname1 = $_POST['userlastname1Newsletter'];
+        $lastname2 = $_POST['userlastname2Newsletter'];
+
+        try {
+            $newsletterController = new NewsletterController();
+            $response = $newsletterController->registerNewsletter($email, $username, $lastname1, $lastname2);
+        } catch (Exception $e) {
+            $response = ['status' => 'error', 'message' => 'Error en el servidor: ' . $e->getMessage()];
+        }
+    } else {
+        $response = ['status' => 'error', 'message' => 'Datos no válidos'];
     }
 }
+
+echo json_encode($response);
+exit;
+
 
 ?>

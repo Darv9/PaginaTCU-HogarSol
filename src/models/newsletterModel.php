@@ -12,6 +12,14 @@ class NewsletterModel {
         $this->db = $database->getConnection();
     }
 
+    public function checkEmailExists($userMail) {
+        $query = "SELECT COUNT(*) FROM NEWSLETTER WHERE USERMAIL = :USERMAIL";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':USERMAIL', $userMail);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0; // Retorna true si el correo existe
+    }
+    
     public function registerNewsletter($userMail, $userName, $userLastname1, $userLastname2){
         $query = "INSERT INTO NEWSLETTER (USERMAIL, USERNAME, USERLASTNAME1, USERLASTNAME2) VALUES (:USERMAIL, :USERNAME, :USERLASTNAME1, :USERLASTNAME2)";
         $stmt = $this->db->prepare($query);
