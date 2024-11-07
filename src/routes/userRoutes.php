@@ -1,27 +1,34 @@
-<?php
-require_once '../controllers/usersController.php';
+<?php 
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 header('Content-Type: application/json');
 
-$userController = new UsersController();
+require_once '../controllers/userController.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'];
+$response = ['status' => 'error', 'message' => 'Acción no válida'];
 
-    if ($action === 'register') {
+if(isset($_POST['action']) && $_POST['action'] === 'registerUser'){
+    if(isset($_POST['userName'], $_POST['userPass'], $_POST['userLastname1'],  $_POST['userLastname2'], $_POST['userMail'])){
         $userName = $_POST['userName'];
+        $userPass = $_POST['userPass'];
         $userLastname1 = $_POST['userLastname1'];
         $userLastname2 = $_POST['userLastname2'];
         $userMail = $_POST['userMail'];
-        $success = $userController->registerUser($userName, $userLastname1, $userLastname2, $userMail);
-        echo json_encode(['status' => $success ? 'success' : 'error']);
-    }
 
-    if ($action === 'confirm') {
-        $confirmation_code = $_POST['confirmation_code'];
-        $success = $userController->confirmUser($confirmation_code);
-        echo json_encode(['status' => $success ? 'success' : 'error']);
+        try{
+            $userController = new UserController();
+            $response = $userController->registerUser($userName, $userPass, $userLastname1, $userLastname2, $userMail);
+        } catch(Exception $e){
+            $response = ['status' => 'error', 'message' => 'Error en el servidor: ' . $e->getMessage()];
+        }
+    } else { 
+        $response = ['status' => 'error', 'message' => 'Datos no válidos'];
     }
 }
+
+
+echo json_encode($response);
+exit;
 
 ?>

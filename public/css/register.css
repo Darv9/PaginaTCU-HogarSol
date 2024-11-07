@@ -1,0 +1,174 @@
+@font-face {
+  src: url(../fonts/NotoSans-VariableFont_wdth\,wght.ttf);
+  font-family: NotoSans-VariableFont;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: NotoSans-VariableFont;
+}
+
+.content {
+  flex: 1;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 100%;
+  align-items: center;
+  margin-top: 40px;
+}
+
+#image1, #image2 {
+  width: 45%;
+  margin: 0 40px;
+  display: block;
+}
+
+#registerUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+#registerUser h2 {
+  margin-bottom: 15px;
+  color: hsl(216, 80%, 47%);
+}
+
+#registerUser p {
+  margin-bottom: 20px;
+  color: hsl(0, 0%, 50%);
+}
+
+#registerUser form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#registerUser label {
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+#registerUser input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+#registerUser button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: hsl(216, 80%, 47%);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#registerUser button:hover {
+  background-color: hsl(216, 90%, 37%);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.btn-link {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  max-width: 20%;
+  background-color: hsl(216, 80%, 47%);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-link:hover {
+  background-color: hsl(216, 90%, 37%);
+}
+
+@media (max-width: 768px) {
+  #container {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+  }
+
+  #image1, #image2 {
+      width: 80%;
+      margin: 20px 0;
+      display: block;
+      text-align: center;
+  }
+
+  #registerUser {
+      width: 90%;
+  }
+
+  #registerUser h2 {
+      font-size: 1.5rem;
+  }
+
+  #registerUser p {
+      font-size: 1rem;
+  }
+
+  .btn-link {
+    max-width: 90%;
+    margin: 20px auto;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #registerUser h2 {
+      font-size: 1.2rem;
+  }
+
+  #registerUser p {
+      font-size: 0.9rem;
+  }
+
+  #registerUser button {
+      padding: 8px 16px;
+  }
+
+  #image1, #image2 {
+      width: 90%;
+      margin: 20px 0;
+  }
+
+  .btn-link {
+    max-width: 90%;
+    margin: 20px auto;
+    text-align: center;
+  }
+}
