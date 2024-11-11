@@ -1,3 +1,7 @@
+<?php
+session_start(); 
+?>
+
 <header>
     <div class="logo">
         <a href="../public/index.php"><img src="../public/images/logo.png" alt="Logo"></a>
@@ -10,8 +14,11 @@
     <div class="login-dropdown">
         <button>Ingresar al Sistema</button>
         <div class="content-login-dropdown">
-            <a href="../public/register.php">Iniciar Sesión</a>
+            <a href="../public/login.php">Iniciar Sesión</a>
             <a href="../public/register.php">Registrarse</a>
+            <?php if (isset($_SESSION['USER_ID'])): ?>
+                <a id="logoutButton">Cerrar Sesión</a>
+            <?php endif; ?>
         </div>
     </div>
 </header>
@@ -26,3 +33,6 @@
         <li><a href="../public/contactenos.php">Contáctenos</a></li>
     </ul>
 </nav>
+
+
+<script src="../public/js/logOut.js"></script>

@@ -12,7 +12,7 @@
 <body>
     <!-- Nos traemos el header prefab -->
     <?php 
-        include("../public/header-footer/header.html"); 
+        include("../public/header-footer/header.php"); 
     ?>
     <!-- Todo el contenido de la página -->
     <div class="content">

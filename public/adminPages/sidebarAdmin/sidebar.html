@@ -1,0 +1,37 @@
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<div class="btn">
+    <span class="fas fa-bars"></span>
+</div>
+<nav class = "sidebar">
+    <div class="text">Menú Administrador</div>
+    <ul>
+        <li>
+            <a href="#" class="mant-btn">Mantenimientos
+                <span class="fas fa-caret-down first"></span>
+            </a>
+            <ul class="mant-show">
+                <li><a href="#">Registro</a></li>
+                <li><a href="#">Boletín Informativo</a></li>
+            </ul>
+        </li>
+        <li><a id="logoutButton" href="#">Cerrar Sesion</a></li>
+    </ul>
+</nav>
+
+<script>
+    $('.btn').click(function(){
+        $(this).toggleClass("click");
+        $('.sidebar').toggleClass("show");
+    });
+    $('.mant-btn').click(function(){
+        $('nav ul .mant-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    });
+    $('nav ul li').click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    });
+</script>
+
+<script src="../../public/js/logOut.js"></script>

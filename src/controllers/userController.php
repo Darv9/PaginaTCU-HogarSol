@@ -44,6 +44,25 @@ class UserController{
         }
     }
 
+    public function loginUser($userMail, $userPass) {
+        // Intentamos hacer login llamando al método loginUser del modelo
+        $user = $this->userModel->loginUser($userMail, $userPass);
+    
+        // Si el login es exitoso, $user contendrá los datos del usuario
+        if ($user) {
+            // Iniciamos la sesión y almacenamos los datos necesarios
+            session_start();
+            $_SESSION['USER_ID'] = $user['USER_ID'];
+            $_SESSION['USERMAIL'] = $user['USERMAIL'];
+            
+            // Retornamos el éxito en un array con un mensaje
+            return ['status' => 'success', 'message' => 'Inicio de sesión exitoso.'];
+        } else {
+            // Si el login falla, retornamos un error en un array
+            return ['status' => 'error', 'message' => 'Correo o contraseña incorrectos, o la cuenta no está confirmada.'];
+        }
+    }
+    
 }
 
 ?>
