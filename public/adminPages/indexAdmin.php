@@ -23,85 +23,43 @@ if (!isset($_SESSION['USER_ID'])) {
     <link rel="stylesheet" href="css/indexAdmin.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/186b29df68.js" crossorigin="anonymous"></script>
+    <script src="../../public/js/getAllUsers.js"></script>
 </head>
 <body>
     <?php 
         include("sidebarAdmin/sidebar.html"); 
     ?>
-    <div class="content">
+   <div class="content">
     <div class="table-container">
         <h2>Lista de Usuarios Registrados</h2>
 
         <!-- Tabla original (para dispositivos grandes) -->
-        <table>
+        <table id="userTable">
             <thead>
                 <tr>
-                    <th>USER_ID</th>
-                    <th>USERNAME</th>
-                    <th>USERPASS</th>
-                    <th>USERLASTNAME1</th>
-                    <th>USERLASTNAME2</th>
-                    <th>USERMAIL</th>
-                    <th>CONFIRMATION_CODE</th>
-                    <th>USER_CONFIRMATION</th>
-                    <th>ROLE_ID</th>
+                    <th>Id del Usuario</th>
+                    <th>Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Correo Electrónico</th>
+                    <th>Confirmación de Usuario</th>
+                    <th>Rol del Usuario</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>johndoe</td>
-                    <td>password123</td>
-                    <td>Doe</td>
-                    <td>Smith</td>
-                    <td>johndoe@example.com</td>
-                    <td>abc123</td>
-                    <td>false</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>janedoe</td>
-                    <td>password456</td>
-                    <td>Doe</td>
-                    <td>Johnson</td>
-                    <td>janedoe@example.com</td>
-                    <td>xyz789</td>
-                    <td>true</td>
-                    <td>1</td>
-                </tr>
-                <!-- Más filas de datos... -->
+            <tbody id="userTableBody">
+                <!-- Las filas de usuario se añadirán dinámicamente aquí -->
             </tbody>
         </table>
 
-        <!-- Tarjetas (para pantallas pequeñas) -->
-        <div class="card">
-            <h3>Usuario: johndoe</h3>
-            <div><span>USER_ID:</span> 1</div>
-            <div><span>USERPASS:</span> password123</div>
-            <div><span>USERLASTNAME1:</span> Doe</div>
-            <div><span>USERLASTNAME2:</span> Smith</div>
-            <div><span>USERMAIL:</span> johndoe@example.com</div>
-            <div><span>CONFIRMATION_CODE:</span> abc123</div>
-            <div><span>USER_CONFIRMATION:</span> false</div>
-            <div><span>ROLE_ID:</span> 2</div>
+        <!-- Contenedor de Tarjetas (para pantallas pequeñas) -->
+        <div id="userCardsContainer">
+            <!-- Las tarjetas de usuario se añadirán dinámicamente aquí -->
         </div>
-
-        <div class="card">
-            <h3>Usuario: janedoe</h3>
-            <div><span>USER_ID:</span> 2</div>
-            <div><span>USERPASS:</span> password456</div>
-            <div><span>USERLASTNAME1:</span> Doe</div>
-            <div><span>USERLASTNAME2:</span> Johnson</div>
-            <div><span>USERMAIL:</span> janedoe@example.com</div>
-            <div><span>CONFIRMATION_CODE:</span> xyz789</div>
-            <div><span>USER_CONFIRMATION:</span> true</div>
-            <div><span>ROLE_ID:</span> 1</div>
-        </div>
-
-        <!-- Más tarjetas de usuarios aquí... -->
     </div>
 </div>
+
 <script src="../../public/js/logOut.js"></script>
 </body>
 </html>

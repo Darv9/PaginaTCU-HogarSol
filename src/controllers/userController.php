@@ -62,6 +62,19 @@ class UserController{
             return ['status' => 'error', 'message' => 'Correo o contraseña incorrectos, o la cuenta no está confirmada.'];
         }
     }
+
+    public function getAllUsers() {
+        // Llamamos al método getAllUsers del modelo para obtener los datos
+        $users = $this->userModel->getAllUsers();
+    
+        // Verificamos si obtuvimos resultados
+        if ($users) {
+            return ['status' => 'success', 'data' => $users];
+        } else {
+            return ['status' => 'error', 'message' => 'No se encontraron usuarios.'];
+        }
+    }
+    
     
 }
 

@@ -102,6 +102,15 @@ class UserModel{
         
         return null; // Usuario no encontrado o cuenta no confirmada
     }
+
+    public function getAllUsers(){
+        $query = "SELECT USER_ID, USERNAME, USERLASTNAME1, USERLASTNAME2, USERMAIL, USER_CONFIRMATION, ROLE_ID FROM USERS";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna todos los registros en un array asociativo
+    }
+    
 }
 
 ?>

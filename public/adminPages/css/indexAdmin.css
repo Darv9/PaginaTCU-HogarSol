@@ -32,9 +32,11 @@ table {
 
 th, td {
     padding: 12px 10px;
-    text-align: left;
+    text-align: center; 
+    vertical-align: middle;
     border: 1px solid #ddd;
     word-wrap: break-word;
+    user-select: text !important;
 }
 
 th {
