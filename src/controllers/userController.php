@@ -44,6 +44,15 @@ class UserController{
         }
     }
 
+    public function deactivateUser($userId){
+        if($this->userModel->validateUserExists($userId)){
+            $this->userModel->deactivateUser($userId);
+            return ['status' => 'success', 'message' => 'El usuario fue desactivado'];
+        }else{
+            return ['status' => 'error', 'message' => 'Error al desactivar el usuario.'];
+        }
+    }
+
     public function loginUser($userMail, $userPass) {
         // Intentamos hacer login llamando al método loginUser del modelo
         $user = $this->userModel->loginUser($userMail, $userPass);

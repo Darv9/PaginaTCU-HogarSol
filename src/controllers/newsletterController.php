@@ -29,6 +29,16 @@ class NewsletterController {
         }
         return ['status' => 'error', 'message' => 'Error al registrar.'];
     }
+
+    public function getAllNewsletterUsers() {
+        $users = $this->newsletterModel->getAllNewsltterUsers();
+
+        if($users){
+            return ['status' => 'success', 'data' => $users];
+        }else {
+            return ['status' => 'error', 'message' => 'No se encontraron usuarios.'];
+        }
+    }
 }
 
 

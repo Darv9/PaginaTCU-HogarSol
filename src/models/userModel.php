@@ -44,12 +44,13 @@ class UserModel{
 
         $confirmation_code = $this->confirmationCode;
 
-        $query = "INSERT INTO USERS (USERNAME, USERPASS, USERLASTNAME1, USERLASTNAME2, USERMAIL, CONFIRMATION_CODE, USER_CONFIRMATION, ROLE_ID) 
-                    VALUES (:USERNAME, :USERPASS, :USERLASTNAME1, :USERLASTNAME2, :USERMAIL, :CONFIRMATION_CODE, :USER_CONFIRMATION, :ROLE_ID)";
+        $query = "INSERT INTO USERS (USERNAME, USERPASS, USERLASTNAME1, USERLASTNAME2, USERMAIL, CONFIRMATION_CODE, USER_CONFIRMATION, ROLE_ID, USER_ACTIVE) 
+                    VALUES (:USERNAME, :USERPASS, :USERLASTNAME1, :USERLASTNAME2, :USERMAIL, :CONFIRMATION_CODE, :USER_CONFIRMATION, :ROLE_ID, :USER_ACTIVE)";
 
         $stmt = $this->db->prepare($query);
         $userRole = 2; //Valor predeterminado del rol
         $userConfirmation = 0; //Valor predeterminado del confirmationUser
+        $userActive = 1; //Valor predeterminado para el campo userActive
 
         $stmt->bindParam('USERNAME', $userName);
         $stmt->bindParam('USERPASS', $hashed_pass);
@@ -59,6 +60,7 @@ class UserModel{
         $stmt->bindParam('CONFIRMATION_CODE', $confirmation_code);
         $stmt->bindParam('USER_CONFIRMATION', $userConfirmation);
         $stmt->bindParam('ROLE_ID', $userRole);
+        $stmt->bindParam('USER_ACTIVE', $userActive);
 
         return $stmt->execute();
     }
@@ -70,6 +72,14 @@ class UserModel{
         $stmt->execute();
         return $stmt->fetchColumn() > 0; //retorna true si el codigo se encuentra 
     }
+    
+    public function validateUserExists($userId){
+        $query = "SELECT * FROM USERS WHERE USER_ID = :USER_ID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':USER_ID', $userId);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0; //retorna true, si encuentra el user
+    }
 
     public function updateConfirmation($confirm_code){
         $user_confirmation = 1;
@@ -77,6 +87,15 @@ class UserModel{
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':USER_CONFIRMATION', $user_confirmation);
         $stmt->bindParam(':CONFIRMATION_CODE', $confirm_code);
+        $stmt->execute();
+    }
+
+    public function deactivateUser($userId){
+        $userActive = 0;
+        $query = "UPDATE USERS SET USER_ACTIVE = :USER_ACTIVE WHERE USER_ID = :USER_ID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':USER_ACTIVE', $userActive);
+        $stmt->bindParam(':USER_ID', $userId);
         $stmt->execute();
     }
 

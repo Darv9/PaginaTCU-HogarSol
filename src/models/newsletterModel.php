@@ -21,13 +21,21 @@ class NewsletterModel {
     }
     
     public function registerNewsletter($userMail, $userName, $userLastname1, $userLastname2){
-        $query = "INSERT INTO NEWSLETTER (USERMAIL, USERNAME, USERLASTNAME1, USERLASTNAME2) VALUES (:USERMAIL, :USERNAME, :USERLASTNAME1, :USERLASTNAME2)";
+        $query = "INSERT INTO NEWSLETTER (USERMAIL, USERNAME, USERLASTNAME1, USERLASTNAME1) VALUES (:USERMAIL, :USERNAME, :USERLASTNAME1, :USERLASTNAME2)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':USERMAIL', $userMail);
         $stmt->bindParam(':USERNAME', $userName);
         $stmt->bindParam(':USERLASTNAME1', $userLastname1);
         $stmt->bindParam(':USERLASTNAME2', $userLastname2);
         return $stmt->execute();
+    }
+
+    public function getAllNewsltterUsers(){
+        $query = "SELECT USERMAIL, USERNAME, USERLASTNAME1, USERLASTNAME2 FROM NEWSLETTER";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
