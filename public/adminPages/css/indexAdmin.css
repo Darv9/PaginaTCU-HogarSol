@@ -18,7 +18,7 @@ body {
     width: 100%;   
 }
 
-.table-container h2{
+.table-container h2 {
     margin-bottom: 10px;
 }
 
@@ -43,7 +43,74 @@ th {
     background-color: #f2f2f2;
 }
 
+button.edit-btn, button.delete-btn {
+    background-color: hsl(216, 80%, 47%); 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    font-size: 14px; 
+    text-align: center; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+}
 
+button.edit-btn:hover, button.delete-btn:hover {
+    background-color: hsl(216, 80%, 57%); 
+}
+
+td button, .card button {
+    display: block; 
+    width: 100%; 
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card div {
+    margin-bottom: 8px;
+}
+
+.card div span {
+    font-weight: bold;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px; 
+}
+
+.card-buttons button {
+    width: 48%; 
+    background-color: hsl(216, 80%, 47%); 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    font-size: 14px; 
+    text-align: center;
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+}
+
+.card-buttons button:hover {
+    background-color: hsl(216, 80%, 57%); 
+}
+
+
+/* Estilos responsivos */
 @media (max-width: 768px) {
     .table-container table {
         display: none !important; 
@@ -52,10 +119,7 @@ th {
     .table-container .card {
         display: block;
         width: 100%;
-        border: 1px solid #ddd;
         margin-bottom: 10px;
-        padding: 10px;
-        text-align: left;
     }
 
     .card h3 {
@@ -70,6 +134,11 @@ th {
     .card div span {
         font-weight: bold;
     }
+
+    .card-buttons button {
+        width: 100%; 
+        margin-bottom: 5px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -83,6 +152,10 @@ th {
 
     .card h3 {
         font-size: 14px;
+    }
+
+    .card-buttons button {
+        font-size: 12px;
     }
 }
 

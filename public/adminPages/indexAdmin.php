@@ -24,6 +24,7 @@ if (!isset($_SESSION['USER_ID'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/186b29df68.js" crossorigin="anonymous"></script>
     <script src="../../public/js/getAllUsers.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <?php 
@@ -44,8 +45,9 @@ if (!isset($_SESSION['USER_ID'])) {
                     <th>Correo Electrónico</th>
                     <th>Confirmación de Usuario</th>
                     <th>Rol del Usuario</th>
+                    <th>Estado del Usuario</th>
                     <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>Desactivar</th>
                 </tr>
             </thead>
             <tbody id="userTableBody">

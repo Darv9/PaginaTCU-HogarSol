@@ -123,7 +123,7 @@ class UserModel{
     }
 
     public function getAllUsers(){
-        $query = "SELECT USER_ID, USERNAME, USERLASTNAME1, USERLASTNAME2, USERMAIL, USER_CONFIRMATION, ROLE_ID FROM USERS";
+        $query = "SELECT USER_ID, USERNAME, USERLASTNAME1, USERLASTNAME2, USERMAIL, USER_CONFIRMATION, ROLE_ID, USER_ACTIVE FROM USERS";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         
