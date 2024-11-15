@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../public/header-footer/css/footerStyle.css">
     <link rel="stylesheet" href="../public/css/index.css">
     <script src="https://kit.fontawesome.com/186b29df68.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <!-- Nos traemos el header prefab -->

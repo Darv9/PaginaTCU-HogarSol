@@ -24,6 +24,7 @@ if (!isset($_SESSION['USER_ID'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/186b29df68.js" crossorigin="anonymous"></script>
     <script src="../../public/js/getAllNewsletterUsers.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <?php 
@@ -31,7 +32,7 @@ if (!isset($_SESSION['USER_ID'])) {
     ?>
    <div class="content">
     <div class="table-container">
-        <h2>Lista de Usuarios Registrados</h2>
+        <h2>Lista de Usuarios Registrados en el Boletín Informativo</h2>
 
         <!-- Tabla original (para dispositivos grandes) -->
         <table id="userTable">
@@ -43,7 +44,7 @@ if (!isset($_SESSION['USER_ID'])) {
                     <th>Segundo Apellido</th>
                     <th>Estado Suscripción</th>
                     <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>Desactivar</th>
                 </tr>
             </thead>
             <tbody id="userTableBody">

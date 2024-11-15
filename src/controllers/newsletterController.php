@@ -39,6 +39,15 @@ class NewsletterController {
             return ['status' => 'error', 'message' => 'No se encontraron usuarios.'];
         }
     }
+
+    public function deactivateUserNL($userId){
+        if($this->newsletterModel->checkMailExists($userId)){
+            $this->newsletterModel->deactivateUserNL($userId);
+            return ['status' => 'success', 'message' => 'El usuario fue desactivado'];
+        }else{
+            return ['status' => 'error', 'message' => 'Error al desactivar el usuario.'];
+        }
+    }
 }
 
 

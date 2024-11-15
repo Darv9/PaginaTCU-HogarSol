@@ -17,7 +17,7 @@ session_start();
             <a href="../public/login.php">Iniciar Sesión</a>
             <a href="../public/register.php">Registrarse</a>
             <?php if (isset($_SESSION['USER_ID'])): ?>
-                <a id="logoutButton">Cerrar Sesión</a>
+                <a id="logoutEmergencyButton">Cerrar Sesión</a>
             <?php endif; ?>
         </div>
     </div>
@@ -35,4 +35,4 @@ session_start();
 </nav>
 
 
-<script src="../public/js/logOut.js"></script>
+<script src="../public/js/logOutEmergency.js"></script>

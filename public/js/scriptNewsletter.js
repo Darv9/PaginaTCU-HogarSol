@@ -126,3 +126,83 @@ function registerUserForNewsletter() {
         });
     });
 }
+
+// Función para inicializar el modal y la lógica de desactivación
+function initializeDeactivateUserModal() {
+    // Mostrar el modal al hacer clic en el botón de apertura
+    document.getElementById('openModalBtn').addEventListener('click', function() {
+        document.getElementById('modal').style.display = 'block';
+    });
+
+    // Cerrar el modal al hacer clic en la "X"
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('modal').style.display = 'none';
+    });
+
+    // Lógica para la llamada AJAX al hacer clic en el botón de desactivación dentro del modal
+    document.getElementById('confirmDeactivateBtn').addEventListener('click', function() {
+        const userMail = document.getElementById('userMailInput').value;
+
+        // Validar que el correo no esté vacío
+        if (!userMail) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Por favor, ingrese un correo electrónico válido.',
+            });
+            return;
+        }
+
+        // Mostrar swal de "cargando"
+        Swal.fire({
+            title: 'Desactivando...',
+            text: 'Por favor, espere un momento.',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+        // Realizar la llamada AJAX
+        fetch('../src/routes/deactivateUserNLRoutes.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                action: 'deactivateUserNL',
+                userMail: userMail
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            Swal.close(); // Cerrar el swal de "cargando"
+            
+            if (data.status === 'success') {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: 'Usuario desactivado exitosamente de la newsletter',
+                });
+                document.getElementById('modal').style.display = 'none'; // Cerrar el modal en caso de éxito
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.message,
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud AJAX:', error);
+            Swal.close(); // Cerrar el swal de "cargando"
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hubo un error al intentar desactivar al usuario.',
+            });
+        });
+    });
+}
+
+

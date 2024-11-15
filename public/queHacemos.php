@@ -77,8 +77,22 @@
 
                 <button type="submit">Confirmar Registro</button>
             </form>
-        </div>
-
+            <!-- Botón para abrir la ventana emergente -->
+            <button id="openModalBtn">Desactivar Suscripción</button>
+            <!-- Ventana emergente (modal) -->
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Desactivar Suscripción al boletín informativo</h3>
+                    <p>Ingrese el correo del usuario que desea desactivar:</p>
+                    <input type="email" id="userMailInput" placeholder="Correo electrónico">
+                    <button id="confirmDeactivateBtn">Desactivar</button>
+                </div>
+            </div>
+            <script>
+                // Inicializa el modal cuando el DOM esté listo
+                document.addEventListener('DOMContentLoaded', initializeDeactivateUserModal);
+            </script>
     </div>
     <!-- Nos tramos el footer prefab -->
     <?php 

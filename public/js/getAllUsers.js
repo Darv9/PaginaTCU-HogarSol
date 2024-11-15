@@ -70,6 +70,10 @@ function populateTable(users) {
     }
 }
 
+function editUser(userId) {
+    // Redirigir a la página de actualización pasando el USER_ID como parámetro
+    window.location.href = `updateUsers.php?user_id=${userId}`;
+}
 
 
 function deactivateUser(userId) {
@@ -135,7 +139,7 @@ function populateCards(users) {
                 <div><span>Estado del Usuario:</span> ${active}</div>
                 <div class="card-buttons">
                     <button onclick="editUser(${user.USER_ID})">Editar</button>
-                    <button onclick="deactivateUser(${user.USER_ID})">Eliminar</button>
+                    <button onclick="deactivateUser(${user.USER_ID})">Desactivar</button>
                 </div>
             `;
             userCardsContainer.appendChild(card);
