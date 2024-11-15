@@ -43,6 +43,25 @@ class NewsletterController {
     public function deactivateUserNL($userId){
         if($this->newsletterModel->checkMailExists($userId)){
             $this->newsletterModel->deactivateUserNL($userId);
+            return ['status' => 'success', 'message' => 'El usuario fue actualizado'];
+        }else{
+            return ['status' => 'error', 'message' => 'Error al actualizar el usuario.'];
+        }
+    }
+
+    public function getUserByIdNL($userId) {
+        $user = $this->newsletterModel->getUserByIdNL($userId);
+        
+        if ($user) {
+            return ['status' => 'success', 'data' => $user];
+        } else {
+            return ['status' => 'error', 'message' => 'Usuario no encontrado.'];
+        }
+    }
+
+    public function updateUserNL($userMail, $userName, $userLastname1, $userLastname2, $userActive, $userId){
+        if($this->newsletterModel->validateUserExistsNL($userId)){
+            $this->newsletterModel->updateUserNL($userMail, $userName, $userLastname1, $userLastname2, $userActive, $userId);
             return ['status' => 'success', 'message' => 'El usuario fue desactivado'];
         }else{
             return ['status' => 'error', 'message' => 'Error al desactivar el usuario.'];

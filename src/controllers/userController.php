@@ -56,9 +56,9 @@ class UserController{
     public function updateUser($userId, $userName, $userPass, $userLastname1, $userLastname2, $userMail, $userActive, $userRol){
         if($this->userModel->validateUserExists($userId)){
             $this->userModel->updateUser($userName, $userPass, $userLastname1, $userLastname2, $userMail, $userActive, $userRol, $userId);
-            return ['status' => 'success', 'message' => 'El usuario fue desactivado'];
+            return ['status' => 'success', 'message' => 'El usuario fue actualizado'];
         }else{
-            return ['status' => 'error', 'message' => 'Error al desactivar el usuario.'];
+            return ['status' => 'error', 'message' => 'Error al actualizar el usuario.'];
         }
     }
 

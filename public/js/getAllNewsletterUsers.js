@@ -34,7 +34,7 @@ function populateTable(users) {
                 <td>${user.USERLASTNAME1}</td>
                 <td>${user.USERLASTNAME2}</td>
                 <td>${active}</td>
-                <td><button class="edit-btn" data-mail="${user.USERMAIL}">Editar</button></td>
+                <td><button class="edit-btn" data-id="${user.USER_ID}">Editar</button></td>
                 <td><button class="delete-btn" data-mail="${user.USERMAIL}">Desactivar</button></td>
             `;
             userTableBody.appendChild(row);
@@ -45,7 +45,7 @@ function populateTable(users) {
             button.addEventListener('click', function() {
                 const userId = button.getAttribute('data-id');
                 // Redirigir a la página de actualización pasando el USER_ID como parámetro
-                window.location.href = `updateUsers.php?user_id=${userId}`;
+                window.location.href = `updateUsersNL.php?user_id=${userId}`;
             });
         });
 
@@ -77,7 +77,7 @@ function populateCards(users) {
                 <div><span>Estado del Usuario:</span> ${active}</div>
                 <div class="card-buttons">
                     <button onclick="editUser(${user.USER_ID})">Editar</button>
-                    <button onclick="deactivateUser(${user.USER_ID})">Desactivar</button>
+                    <button onclick="deactivateUserNL('${user.USERMAIL}')">Desactivar</button>
                 </div>
             `;
             userCardsContainer.appendChild(card);
@@ -85,6 +85,11 @@ function populateCards(users) {
     } else {
         userCardsContainer.innerHTML = "<p>No hay usuarios disponibles</p>";
     }
+}
+
+function editUser(userId) {
+    // Redirigir a la página de actualización pasando el USER_ID como parámetro
+    window.location.href = `updateUsersNL.php?user_id=${userId}`;
 }
 
 function deactivateUserNL(userMail) {
