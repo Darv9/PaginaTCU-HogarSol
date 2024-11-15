@@ -17,8 +17,19 @@ class NewsletterModel {
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':USERMAIL', $userMail);
         $stmt->execute();
-        return $stmt->fetchColumn() > 0; // Retorna true si el correo existe
+    
+        return $stmt->fetchColumn() > 0; // Retorna true si el correo existe, false si no
     }
+
+    public function checkEmailActive($userMail) {
+        $query = "SELECT USER_ACTIVE FROM NEWSLETTER WHERE USERMAIL = :USERMAIL";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':USERMAIL', $userMail);
+        $stmt->execute();
+        
+        return $stmt->fetchColumn(); // Retorna 1 si está activo, 0 si está inactivo
+    }
+    
     
     public function registerNewsletter($userMail, $userName, $userLastname1, $userLastname2){
         $userActive = 1;
@@ -30,6 +41,14 @@ class NewsletterModel {
         $stmt->bindParam(':USERLASTNAME2', $userLastname2);
         $stmt->bindParam(':USER_ACTIVE', $userActive);
         return $stmt->execute();
+    }
+
+    // Actualiza el estado del usuario a "activo"
+    public function reactivateEmail($userMail) {
+        $updateQuery = "UPDATE NEWSLETTER SET USER_ACTIVE = 1 WHERE USERMAIL = :USERMAIL";
+        $updateStmt = $this->db->prepare($updateQuery);
+        $updateStmt->bindParam(':USERMAIL', $userMail);
+        return $updateStmt->execute();
     }
 
     public function getAllNewsltterUsers(){

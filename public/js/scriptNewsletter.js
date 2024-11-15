@@ -100,17 +100,28 @@ function registerUserForNewsletter() {
         Swal.close();
 
         if (data.status === 'success') {
-            Swal.fire({
-                title: "Registro exitoso!",
-                text: "Revise su correo electrónico para confirmar!",
-                icon: "success"
-            });
+            if (data.message.includes('reactivado')) {
+                Swal.fire({
+                    title: "Usuario reactivado!",
+                    text: "El usuario se ha reactivado con éxito.",
+                    icon: "success",
+                    didClose: () => clearForm()
+                });
+            } else {
+                Swal.fire({
+                    title: "Registro exitoso!",
+                    text: "Revise su correo electrónico para confirmar!",
+                    icon: "success",
+                    didClose: () => clearForm()
+                });
+            }
         } else {
             // Muestra el mensaje de error específico devuelto por el servidor
             Swal.fire({
                 title: "Error al registrar el usuario!",
                 text: data.message || "Verifique que los datos ingresados sean válidos", // Mensaje del servidor
-                icon: "error"
+                icon: "error",
+                didClose: () => clearForm()
             });
         }
     })
@@ -122,10 +133,20 @@ function registerUserForNewsletter() {
         Swal.fire({
             title: "Hubo un problema con la solicitud!",
             text: "Contacte con un administrador",
-            icon: "error"
+            icon: "error",
+            didClose: () => clearForm()
         });
     });
 }
+
+// Función para limpiar los campos del formulario
+function clearForm() {
+    document.getElementById('emailNewsletter').value = '';
+    document.getElementById('usernameNewsletter').value = '';
+    document.getElementById('userlastname1Newsletter').value = '';
+    document.getElementById('userlastname2Newsletter').value = '';
+}
+
 
 // Función para inicializar el modal y la lógica de desactivación
 function initializeDeactivateUserModal() {
@@ -182,7 +203,7 @@ function initializeDeactivateUserModal() {
                 Swal.fire({
                     icon: 'success',
                     title: '¡Éxito!',
-                    text: 'Usuario desactivado exitosamente de la newsletter',
+                    text: 'Usuario desactivado exitosamente.',
                 });
                 document.getElementById('modal').style.display = 'none'; // Cerrar el modal en caso de éxito
             } else {
