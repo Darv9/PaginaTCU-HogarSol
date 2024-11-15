@@ -6,12 +6,10 @@ require_once '../mail/confirmationMail.php';
 
 class UserController{
     private $userModel;
-    private $massEmail;
 
     public function __construct()
     {
         $this -> userModel = new UserModel();
-        $this -> massEmail = new MassEmail();
     }
 
     public function registerUser($userName, $userPass, $userLastname1, $userLastname2, $userMail){
@@ -114,20 +112,6 @@ class UserController{
         } else {
             return ['status' => 'error', 'message' => 'Usuario no encontrado.'];
         }
-    }
-
-    public function sendMassEmail($subject, $message) {
-        // Obtenemos los correos electrónicos de todos los usuarios
-        $users = $this->userModel->getAllUsersMail();
-
-        if (empty($users)) {
-            return ['status' => 'error', 'message' => 'No se encontraron usuarios para enviar el correo.'];
-        }
-
-        // Usamos el método sendMassEmail de EmailService para enviar el correo masivo
-        $this->massEmail->sendMassEmail($users, $subject, $message);
-        
-        return ['status' => 'success', 'message' => 'Correo enviado a todos los usuarios.'];
     }
     
     
