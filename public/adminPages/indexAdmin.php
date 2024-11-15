@@ -27,6 +27,16 @@ if (!isset($_SESSION['USER_ID'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+    <!-- Este div se muestra si el usuario ha iniciado sesión -->
+    <div id="userGreeting" class="user-greeting">
+        <?php
+        if (isset($_SESSION['USERMAIL'])) {
+            echo 'Ingresado como: ' . htmlspecialchars($_SESSION['USERMAIL']);
+        } else {
+            echo 'No se ha iniciado sesión.';
+        }
+        ?>
+    </div>
     <?php 
         include("sidebarAdmin/sidebar.html"); 
     ?>
