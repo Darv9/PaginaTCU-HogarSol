@@ -182,6 +182,13 @@ class UserModel{
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna todos los registros en un array asociativo
     }
+
+    public function getAllUsersMail(){
+        $query = "SELECT USERMAIL FROM USERS";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 
