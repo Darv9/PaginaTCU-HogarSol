@@ -60,10 +60,19 @@ textarea {
     border-radius: 4px;
     font-size: 16px;
 }
+
 textarea {
-    height: 150px;
-    resize: vertical;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 150px; /* Altura inicial */
+    max-height: 300px; /* Altura máxima */
+    resize: vertical; /* Permite redimensionar solo en vertical */
+    overflow-y: auto; /* Muestra la barra de desplazamiento cuando el contenido excede el max-height */
 }
+
 input[type="file"] {
     width: 100%;
     padding: 10px;
