@@ -98,33 +98,86 @@ class UserModel{
         $stmt->bindParam(':USER_ID', $userId);
         $stmt->execute();
     }
+    
+    public function updateUser($userName, $userPass, $userLastname1, $userLastname2, $userMail, $userActive, $userRol, $userId){
+        // Si la contraseña está vacía, obtenemos la contraseña actual de la base de datos
+        if (empty($userPass)) {
+            $query = "SELECT USERPASS FROM USERS WHERE USER_ID = :USER_ID";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':USER_ID', $userId);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $userPass = $result['USERPASS']; // Usamos la contraseña actual si no se envió una nueva
+        } else {
+            $userPass = password_hash($userPass, PASSWORD_DEFAULT); // Hasheamos la nueva contraseña si se ha enviado
+        }
+    
+        $query = "UPDATE USERS SET USERNAME = :USERNAME, USERPASS = :USERPASS, USERLASTNAME1 = :USERLASTNAME1, USERLASTNAME2 = :USERLASTNAME2, USERMAIL = :USERMAIL, USER_ACTIVE = :USER_ACTIVE, ROLE_ID = :ROLE_ID WHERE USER_ID = :USER_ID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':USER_ID', $userId);
+        $stmt->bindParam(':USERNAME', $userName);
+        $stmt->bindParam(':USERPASS', $userPass);
+        $stmt->bindParam(':USERLASTNAME1', $userLastname1);
+        $stmt->bindParam(':USERLASTNAME2', $userLastname2);
+        $stmt->bindParam(':USERMAIL', $userMail);
+        $stmt->bindParam(':USER_ACTIVE', $userActive);
+        $stmt->bindParam(':ROLE_ID', $userRol);
+        $stmt->execute();
+    }
+    
+    
 
     public function loginUser($userMail, $userPass){
-        $query = "SELECT USER_ID, USERMAIL, USERPASS, USER_CONFIRMATION, ROLE_ID FROM USERS WHERE USERMAIL = :USERMAIL";
+        $query = "SELECT USER_ID, USERMAIL, USERPASS, USER_CONFIRMATION, ROLE_ID, USER_ACTIVE FROM USERS WHERE USERMAIL = :USERMAIL";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':USERMAIL', $userMail);
         $stmt->execute();
-
+    
         // Obtener la información del usuario
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Verificar si el usuario existe y si la cuenta está confirmada
-        if ($user && $user['USER_CONFIRMATION'] == 1 && $user['ROLE_ID'] == 2) {
+    
+        // Verificar si el usuario existe
+        if ($user) {
+            // Verificar si la cuenta está confirmada
+            if ($user['USER_CONFIRMATION'] != 1) {
+                return 'not_confirmed'; // Usuario no confirmado
+            }
+            
+            // Verificar si el usuario está activo
+            if ($user['USER_ACTIVE'] != 1) {
+                return 'not_active'; // Usuario inactivo
+            }
+    
+            // Verificar si el usuario es administrador (ROLE_ID == 1 por ejemplo)
+            if ($user['ROLE_ID'] != 1) {
+                return 'not_admin'; // Usuario no es administrador
+            }
+    
             // Verificar la contraseña
             if (password_verify($userPass, $user['USERPASS'])) {
                 return [
                     'USER_ID' => $user['USER_ID'],
                     'USERMAIL' => $userMail
                 ];
-            }      
+            }
         }
-        
-        return null; // Usuario no encontrado o cuenta no confirmada
+    
+        return 'invalid_credentials'; // Credenciales inválidas (correo o contraseña incorrectos)
     }
+    
 
     public function getAllUsers(){
         $query = "SELECT USER_ID, USERNAME, USERLASTNAME1, USERLASTNAME2, USERMAIL, USER_CONFIRMATION, ROLE_ID, USER_ACTIVE FROM USERS";
         $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna todos los registros en un array asociativo
+    }
+
+    public function getUserById($userId){
+        $query = "SELECT USER_ID, USERNAME, USERLASTNAME1, USERLASTNAME2, USERMAIL, USER_CONFIRMATION, ROLE_ID, USER_ACTIVE FROM USERS WHERE USER_ID = :USER_ID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':USER_ID', $userId);
         $stmt->execute();
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna todos los registros en un array asociativo

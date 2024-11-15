@@ -53,7 +53,8 @@ function populateTable(users) {
         document.querySelectorAll('.edit-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const userId = button.getAttribute('data-id');
-                editUser(userId); // Llama a la función editUser pasando el ID
+                // Redirigir a la página de actualización pasando el USER_ID como parámetro
+                window.location.href = `updateUsers.php?user_id=${userId}`;
             });
         });
 
@@ -68,6 +69,7 @@ function populateTable(users) {
         userTableBody.innerHTML = "<tr><td colspan='9'>No hay usuarios disponibles</td></tr>";
     }
 }
+
 
 
 function deactivateUser(userId) {

@@ -9,7 +9,7 @@ session_start(); // Esto es necesario para acceder a $_SESSION
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['USER_ID'])) {
     // Si no ha iniciado sesión, redirigir a la página de login
-    header("Location: http://localhost/hogarsolweb/PaginaTCU-HogarSol/public/index.php"); 
+    header("Location: ../../public/index.php"); 
     exit();
 }
 ?>

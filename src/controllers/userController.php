@@ -53,24 +53,44 @@ class UserController{
         }
     }
 
-    public function loginUser($userMail, $userPass) {
-        // Intentamos hacer login llamando al método loginUser del modelo
-        $user = $this->userModel->loginUser($userMail, $userPass);
-    
-        // Si el login es exitoso, $user contendrá los datos del usuario
-        if ($user) {
-            // Iniciamos la sesión y almacenamos los datos necesarios
-            session_start();
-            $_SESSION['USER_ID'] = $user['USER_ID'];
-            $_SESSION['USERMAIL'] = $user['USERMAIL'];
-            
-            // Retornamos el éxito en un array con un mensaje
-            return ['status' => 'success', 'message' => 'Inicio de sesión exitoso.'];
-        } else {
-            // Si el login falla, retornamos un error en un array
-            return ['status' => 'error', 'message' => 'Correo o contraseña incorrectos, o la cuenta no está confirmada.'];
+    public function updateUser($userId, $userName, $userPass, $userLastname1, $userLastname2, $userMail, $userActive, $userRol){
+        if($this->userModel->validateUserExists($userId)){
+            $this->userModel->updateUser($userName, $userPass, $userLastname1, $userLastname2, $userMail, $userActive, $userRol, $userId);
+            return ['status' => 'success', 'message' => 'El usuario fue desactivado'];
+        }else{
+            return ['status' => 'error', 'message' => 'Error al desactivar el usuario.'];
         }
     }
+
+    public function loginUser($userMail, $userPass) {
+        // Intentamos hacer login llamando al método loginUser del modelo
+        $loginResult = $this->userModel->loginUser($userMail, $userPass);
+        
+        // Revisamos el resultado del login
+        if (is_array($loginResult)) {
+            // Si el resultado es un array, es un login exitoso
+            session_start();
+            $_SESSION['USER_ID'] = $loginResult['USER_ID'];
+            $_SESSION['USERMAIL'] = $loginResult['USERMAIL'];
+            
+            // Retornamos éxito
+            return ['status' => 'success', 'message' => 'Inicio de sesión exitoso.'];
+        } else {
+            // Si el login falla, $loginResult contendrá un error específico
+            switch ($loginResult) {
+                case 'not_confirmed':
+                    return ['status' => 'error', 'message' => 'Cuenta no confirmada. Revise su corre electrónico y confirme su registro.'];
+                case 'not_active':
+                    return ['status' => 'error', 'message' => 'Cuenta desactivada. Contacte con un administrador.'];
+                case 'not_admin':
+                    return ['status' => 'error', 'message' => 'No tienes permisos de administrador.'];
+                case 'invalid_credentials':
+                default:
+                    return ['status' => 'error', 'message' => 'Correo o contraseña incorrectos.'];
+            }
+        }
+    }
+    
 
     public function getAllUsers() {
         // Llamamos al método getAllUsers del modelo para obtener los datos
@@ -81,6 +101,16 @@ class UserController{
             return ['status' => 'success', 'data' => $users];
         } else {
             return ['status' => 'error', 'message' => 'No se encontraron usuarios.'];
+        }
+    }
+
+    public function getUserById($userId) {
+        $user = $this->userModel->getUserById($userId);
+        
+        if ($user) {
+            return ['status' => 'success', 'data' => $user];
+        } else {
+            return ['status' => 'error', 'message' => 'Usuario no encontrado.'];
         }
     }
     
