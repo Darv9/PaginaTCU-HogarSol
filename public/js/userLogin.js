@@ -86,7 +86,7 @@ function loginUserMain(){
                 icon: "success"
             }).then(() => {
                 // Redirige a la página de inicio
-                window.location.href = 'http://localhost/hogarsolweb/PaginaTCU-HogarSol/public/adminPages/indexAdmin.php';  
+                window.location.href = '../../public/adminPages/indexAdmin.php';  
             });
         } else {
             // Muestra el mensaje de error específico devuelto por el servidor

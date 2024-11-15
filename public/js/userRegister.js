@@ -70,8 +70,8 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-function registerUserMain(){
-    //Mostrar el swal de carga
+function registerUserMain() {
+    // Mostrar el swal de carga
     Swal.fire({
         title: 'Cargando...',
         text: 'Estamos procesando su solicitud, por favor espere',
@@ -81,14 +81,14 @@ function registerUserMain(){
         }
     });
 
-    //Captura los valores de los campos del formulario
+    // Captura los valores de los campos del formulario
     const email = document.getElementById('userMail').value.trim();
     const username = document.getElementById('userName').value.trim();
     const lastname1 = document.getElementById('userLastname1').value.trim();
     const lastname2 = document.getElementById('userLastname2').value.trim();
     const userpass = document.getElementById('userPass').value.trim();
 
-    //Se realiza la llamada fetch con los datos del formulario
+    // Realiza la llamada fetch con los datos del formulario
     fetch('../src/routes/userRoutes.php', {
         method: 'POST',
         headers: {
@@ -118,6 +118,12 @@ function registerUserMain(){
                 title: "Registro exitoso!",
                 text: "Revise su correo electrónico para confirmar!",
                 icon: "success"
+            }).then(() => {
+                // Llamada a la función clearForm para limpiar los campos
+                clearForm();
+                
+                // Redireccionar a la página deseada
+                window.location.href = '../public/login.php'; 
             });
         } else {
             // Muestra el mensaje de error específico devuelto por el servidor
@@ -139,4 +145,13 @@ function registerUserMain(){
             icon: "error"
         });
     });
+}
+
+// Función para limpiar el formulario
+function clearForm() {
+    document.getElementById('userMail').value = '';
+    document.getElementById('userName').value = '';
+    document.getElementById('userLastname1').value = '';
+    document.getElementById('userLastname2').value = '';
+    document.getElementById('userPass').value = '';
 }

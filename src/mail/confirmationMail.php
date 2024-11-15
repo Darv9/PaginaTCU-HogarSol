@@ -8,7 +8,6 @@ use PHPMailer\PHPMailer\Exception;
 
 class ConfirmationMail {
     public function sendConfirmationEmail($email, $confirmation_code) {
-        // Validar el formato del correo
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo 'El correo electrónico no es válido.';
             return;
@@ -32,30 +31,42 @@ class ConfirmationMail {
 
             // Configurar el correo como HTML
             $mail->isHTML(true);
-            $mail->CharSet = 'UTF-8'; // Codificación UTF-8
+            $mail->CharSet = 'UTF-8';
             $mail->Subject = 'Confirmación de Registro';
 
-            // Cargar la plantilla del correo y reemplazar las variables
-            $template = file_get_contents('../mail/templates/confirmationMail.html'); 
-            $confirmation_url = "http://localhost/hogarsolweb/PaginaTCU-HogarSol/src/routes/mailValidationRoutes.php?code=" . $confirmation_code;
-            $button = '<a href="' . $confirmation_url . '" style="padding: 10px 20px; background-color: hsl(216, 80%, 47%); color: white; text-decoration: none; border-radius: 5px;">Confirmar Registro</a>';
-            $body = str_replace('{{button}}', $button, $template); 
+            // Genera la URL dinámica
+            $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+            $host = $_SERVER['HTTP_HOST'];
+            $basePath = $protocol . "://" . $host . "/hogarsolweb/PaginaTCU-HogarSol";
+            $confirmation_url = $basePath . "/src/routes/mailValidationRoutes.php?code=" . urlencode($confirmation_code);
 
-            
+            // Crear botón de confirmación y plantilla
+            $template = file_get_contents('../mail/templates/confirmationMail.html');
+            $button = '<table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+                <td style="border-radius: 5px; background-color: #3366CC; text-align: center;">
+                    <a href="' . $confirmation_url . '" style="display: inline-block; padding: 10px 20px; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: bold;">
+                        Confirmar Registro
+                    </a>
+                </td>
+            </tr>
+        </table>';
+        $body = str_replace('{{button}}', $button, $template);
+
             $mail->Body = $body;
 
-            // Si es necesario, agregar una imagen incrustada
+            // Incrustar imagen de logo
             try {
-                $mail->addEmbeddedImage(__DIR__ . '/../../public/images/logo.png', 'logo_cid'); // Ruta a la imagen
+                $mail->addEmbeddedImage(__DIR__ . '/../../public/images/logo.png', 'logo_cid');
             } catch (Exception $e) {
                 echo 'Error al adjuntar la imagen: ' . $e->getMessage();
             }
 
-            // Enviar el correo
+            // Enviar correo
             $mail->send();
-            return true; //El correo se envia de forma exitosa
+            return true;
         } catch (Exception $e) {
-            return false; //Error al enviar el correo
+            return false;
         }
     }
 }
