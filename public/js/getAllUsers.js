@@ -27,7 +27,7 @@ function populateTable(users) {
     if (Array.isArray(users) && users.length > 0) {
         users.forEach(user => {
             const role = user.ROLE_ID === 1 ? 'Administrador' : (user.ROLE_ID === 2 ? 'Usuario' : 'Desconocido');
-            const confirmed = user.USER_CONFIRMATION === 1 ? 'Confirmado' : (user.USER_CONFIRMATION === 2 ? 'Pendiente Confirmar' : 'Desconocido');
+            const confirmed = user.USER_CONFIRMATION === 1 ? 'Confirmado' : (user.USER_CONFIRMATION === 0 ? 'Pendiente Confirmar' : 'Desconocido');
             const active = user.USER_ACTIVE === 1 ? 'Activo' : (user.USER_ACTIVE === 0 ? 'Desactivado' : 'Desconocido');
             // Crear la fila para el usuario
             const row = document.createElement('tr');
@@ -124,7 +124,7 @@ function populateCards(users) {
     if (Array.isArray(users) && users.length > 0) {
         users.forEach(user => {
             const role = user.ROLE_ID === 1 ? 'Administrador' : (user.ROLE_ID === 2 ? 'Usuario' : 'Desconocido');
-            const confirmed = user.USER_CONFIRMATION === 1 ? 'Confirmado' : (user.USER_CONFIRMATION === 2 ? 'Pendiente Confirmar' : 'Desconocido');
+            const confirmed = user.USER_CONFIRMATION === 1 ? 'Confirmado' : (user.USER_CONFIRMATION === 0 ? 'Pendiente Confirmar' : 'Desconocido');
             const active = user.USER_ACTIVE === 1 ? 'Activo' : (user.USER_ACTIVE === 0 ? 'Desactivado' : 'Desconocido');
             const card = document.createElement('div');
             card.classList.add('card');
