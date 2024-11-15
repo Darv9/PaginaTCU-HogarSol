@@ -104,6 +104,13 @@ class NewsletterModel {
         $stmt->execute();
         return $stmt->fetchColumn() > 0; //retorna true, si encuentra el user
     }
+
+    public function getAllUsersMail(){
+        $query = "SELECT USERMAIL FROM NEWSLETTER";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>
