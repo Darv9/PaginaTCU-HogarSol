@@ -10,14 +10,16 @@ class NewsletterController {
         $this->newsletterModel = new NewsletterModel();
     }
 
+
     public function registerNewsletter($userMail, $userName, $userLastname1, $userLastname2) {
         // Verifica si el correo ya está registrado
         if ($this->newsletterModel->checkEmailExists($userMail)) {
-            // Si el correo está registrado y activo, no se hace nada
+            // Si el correo está registrado, verifica si está activo
             $emailStatus = $this->newsletterModel->checkEmailActive($userMail);
     
             if ($emailStatus === 1) {
-                return ['status' => 'success', 'message' => 'El correo electrónico ya está registrado y activo.'];
+                // Si el correo está activo, devuelve un error
+                return ['status' => 'error', 'message' => 'El correo electrónico ya está registrado y activo.'];
             }
     
             // Si el correo está inactivo, lo reactiva
@@ -38,13 +40,8 @@ class NewsletterController {
             }
         }
     
-        return ['status' => 'error', 'message' => 'Error al registrar el usuario. Usuario ya existe y se encuentra activo'];
+        return ['status' => 'error', 'message' => 'Error al registrar el usuario.'];
     }
-    
-    
-    
-
-
 
     public function getAllNewsletterUsers() {
         $users = $this->newsletterModel->getAllNewsltterUsers();

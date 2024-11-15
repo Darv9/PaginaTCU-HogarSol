@@ -28,6 +28,4 @@ if (isset($_POST['action']) && $_POST['action'] === 'registerNewsletter') {
 
 echo json_encode($response);
 exit;
-
-
 ?>

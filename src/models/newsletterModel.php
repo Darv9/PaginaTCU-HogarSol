@@ -21,6 +21,7 @@ class NewsletterModel {
         return $stmt->fetchColumn() > 0; // Retorna true si el correo existe, false si no
     }
 
+    // Verifica si el correo está activo
     public function checkEmailActive($userMail) {
         $query = "SELECT USER_ACTIVE FROM NEWSLETTER WHERE USERMAIL = :USERMAIL";
         $stmt = $this->db->prepare($query);
@@ -29,9 +30,9 @@ class NewsletterModel {
         
         return $stmt->fetchColumn(); // Retorna 1 si está activo, 0 si está inactivo
     }
-    
-    
-    public function registerNewsletter($userMail, $userName, $userLastname1, $userLastname2){
+
+    // Registra un nuevo correo
+    public function registerNewsletter($userMail, $userName, $userLastname1, $userLastname2) {
         $userActive = 1;
         $query = "INSERT INTO NEWSLETTER (USERMAIL, USERNAME, USERLASTNAME1, USERLASTNAME2, USER_ACTIVE) VALUES (:USERMAIL, :USERNAME, :USERLASTNAME1, :USERLASTNAME2, :USER_ACTIVE)";
         $stmt = $this->db->prepare($query);
@@ -42,6 +43,7 @@ class NewsletterModel {
         $stmt->bindParam(':USER_ACTIVE', $userActive);
         return $stmt->execute();
     }
+
 
     // Actualiza el estado del usuario a "activo"
     public function reactivateEmail($userMail) {
@@ -106,8 +108,10 @@ class NewsletterModel {
     }
 
     public function getAllUsersMail(){
-        $query = "SELECT USERMAIL FROM NEWSLETTER";
+        $userActive = 1;
+        $query = "SELECT USERMAIL FROM NEWSLETTER WHERE USER_ACTIVE = :USER_ACTIVE";
         $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':USER_ACTIVE', $userActive);
         $stmt->execute();
         return  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

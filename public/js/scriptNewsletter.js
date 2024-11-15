@@ -96,10 +96,11 @@ function registerUserForNewsletter() {
         return response.json(); // Esto solo se ejecutará si la respuesta fue correcta
     })
     .then(data => {
-        // Cierra el swal de carga antes de mostrar el resultado
-        Swal.close();
-
+        console.log(data);
+        Swal.close(); // Cerrar el swal de carga
+    
         if (data.status === 'success') {
+            // Mostrar swal de éxito
             if (data.message.includes('reactivado')) {
                 Swal.fire({
                     title: "Usuario reactivado!",
@@ -107,24 +108,24 @@ function registerUserForNewsletter() {
                     icon: "success",
                     didClose: () => clearForm()
                 });
-            } else {
+            } else if (data.message.includes('registrado correctamente')) {
                 Swal.fire({
                     title: "Registro exitoso!",
-                    text: "Revise su correo electrónico para confirmar!",
+                    text: "Revise su correo electrónico para confirmar.",
                     icon: "success",
                     didClose: () => clearForm()
                 });
             }
         } else {
-            // Muestra el mensaje de error específico devuelto por el servidor
+            // Asegúrate de que el mensaje de error se maneja aquí
             Swal.fire({
                 title: "Error al registrar el usuario!",
-                text: data.message || "Verifique que los datos ingresados sean válidos", // Mensaje del servidor
+                text: data.message || "Verifique que los datos ingresados sean válidos", // Muestra el mensaje de error del servidor
                 icon: "error",
                 didClose: () => clearForm()
             });
         }
-    })
+    })    
     .catch(error => {
         // Cierra el swal de carga si hay un error
         Swal.close();
