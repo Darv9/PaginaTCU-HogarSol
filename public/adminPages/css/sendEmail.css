@@ -14,20 +14,18 @@ body {
     height: 100vh;
 }
 
-/* Contenedor principal que centra todo */
 .content {
     display: flex;
     justify-content: center; 
-    align-items: flex-start;  /* Cambiado para que se alinee correctamente en pantallas grandes */
+    align-items: flex-start;  
     width: 100%;
     padding: 20px;
 }
 
-/* Contenedor del email */
 .email-container {
-    width: 90%; /* Ancho flexible */
-    max-width: 800px; /* Mayor max-width en pantallas grandes */
-    margin: 20px auto;  /* Asegura que se centre */
+    width: 90%; 
+    max-width: 800px; 
+    margin: 20px auto;  
     padding: 20px;
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -35,14 +33,12 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
 h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
 }
 
-/* Formulario */
 .form-group {
     margin-bottom: 15px;
 }
@@ -67,10 +63,10 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
-    height: 150px; /* Altura inicial */
-    max-height: 300px; /* Altura máxima */
-    resize: vertical; /* Permite redimensionar solo en vertical */
-    overflow-y: auto; /* Muestra la barra de desplazamiento cuando el contenido excede el max-height */
+    height: 150px; 
+    max-height: 300px; 
+    resize: vertical; 
+    overflow-y: auto; 
 }
 
 input[type="file"] {
@@ -83,7 +79,6 @@ input[type="file"] {
     margin-top: 10px;
 }
 
-/* Botón */
 button {
     width: 100%;
     padding: 10px;
@@ -99,14 +94,12 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Mensaje de respuesta */
 #responseMessage {
     margin-top: 15px;
     text-align: center;
     font-size: 14px;
 }
 
-/* Mensaje de saludo */
 .user-greeting {
     position: fixed; 
     top: 10px; 
@@ -125,14 +118,10 @@ button:hover {
     box-sizing: border-box;
 }
 
-/* Estilo para mensaje de error */
 .user-greeting.error {
     background-color: #f44336; 
 }
 
-/* Responsividad */
-
-/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     .email-container {
         padding: 15px;
@@ -153,7 +142,6 @@ button:hover {
     }
 }
 
-/* Ajustes para pantallas muy pequeñas */
 @media (max-width: 480px) {
     h2 {
         font-size: 20px;

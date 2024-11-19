@@ -88,7 +88,6 @@ td button, .card button {
     width: 100%; 
 }
 
-/* Ajustes para las tarjetas */
 .card {
     border: 1px solid #ddd;
     padding: 15px;
@@ -96,7 +95,7 @@ td button, .card button {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 100%; /* Asegura que las tarjetas no se salgan de su contenedor */
+    height: 100%; 
 }
 
 .card h3 {
@@ -137,11 +136,11 @@ td button, .card button {
 
 #userCardsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Asegura que las tarjetas se distribuyan en varias columnas */
-    gap: 20px; /* Espacio entre las tarjetas */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px; 
     padding: 20px;
-    max-height: 80vh; /* Limitar la altura del contenedor */
-    overflow-y: auto; /* Agregar scroll si las tarjetas exceden la altura */
+    max-height: 80vh; 
+    overflow-y: auto; 
 }
 
 
@@ -157,9 +156,9 @@ td button, .card button {
         margin-bottom: 10px;
     }
 
-    /* Para dispositivos móviles y tabletas, ajustamos el tamaño de las tarjetas y columnas */
+   
     #userCardsContainer {
-        grid-template-columns: 1fr; /* Una tarjeta por fila en pantallas pequeñas */
+        grid-template-columns: 1fr; 
         padding: 10px;
     }
 

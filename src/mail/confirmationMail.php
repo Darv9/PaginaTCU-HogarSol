@@ -23,12 +23,12 @@ class ConfirmationMail {
         try {
             // Configuración del servidor SMTP usando variables de .env
             $mail->isSMTP();
-            $mail->Host = $_ENV['SMTP_HOST'];  // Ahora se usa desde .env
-            $mail->SMTPAuth = $_ENV['SMTP_AUTH'] == '1';  // Asegúrate de que la variable sea booleana
-            $mail->Username = $_ENV['SMTP_USERNAME'];  // Usuario desde .env
-            $mail->Password = $_ENV['SMTP_PASSWORD'];  // Contraseña desde .env
+            $mail->Host = $_ENV['SMTP_HOST'];  
+            $mail->SMTPAuth = $_ENV['SMTP_AUTH'] == '1';  
+            $mail->Username = $_ENV['SMTP_USERNAME'];  
+            $mail->Password = $_ENV['SMTP_PASSWORD'];  
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = $_ENV['SMTP_PORT'];  // Puerto desde .env
+            $mail->Port = $_ENV['SMTP_PORT'];  
 
             // Remitente y destinatario
             $mail->setFrom($_ENV['FROM_EMAIL'], $_ENV['FROM_NAME']);
@@ -36,7 +36,7 @@ class ConfirmationMail {
 
             // Configurar el correo como HTML
             $mail->isHTML(true);
-            $mail->CharSet = $_ENV['MAIL_CHARSET'];  // Charset desde .env
+            $mail->CharSet = $_ENV['MAIL_CHARSET'];  
             $mail->Subject = 'Confirmación de Registro';
 
             // Genera la URL dinámica

@@ -66,7 +66,7 @@ function clearErrors() {
 }
 
 function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar el formato del correo electrónico
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
     return re.test(String(email).toLowerCase());
 }
 

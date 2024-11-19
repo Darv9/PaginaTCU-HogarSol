@@ -19,7 +19,7 @@ function sendMassEmail() {
     
     // Si hay una imagen, agregarla al FormData
     if (imageUpload) {
-        formData.append('imageUpload', imageUpload); // Nombre del campo debe coincidir con el que se usa en PHP
+        formData.append('imageUpload', imageUpload); 
         console.log("Imagen a enviar:", imageUpload.name);  // Verificar imagen en la consola
     } else {
         console.log("No se seleccionó imagen.");  // Mensaje si no se seleccionó una imagen
@@ -30,12 +30,12 @@ function sendMassEmail() {
         method: 'POST',
         body: formData,
     })
-    .then(response => response.text())  // Cambiar a .text() para ver la respuesta cruda
+    .then(response => response.text())  
     .then(text => {
         console.log('Respuesta del servidor:', text);  // Ver lo que se recibe del servidor
 
         try {
-            const data = JSON.parse(text);  // Intentar convertir la respuesta a JSON
+            const data = JSON.parse(text);  
             if (data.status === 'success') {
                 responseMessage.textContent = data.message;
                 responseMessage.style.color = 'green';
@@ -67,7 +67,7 @@ function previewImage() {
     if (file) {
         const reader = new FileReader();
         reader.onload = function(event) {
-            previewContainer.innerHTML = `<img src="${event.target.result}" alt="Previsualización de imagen" style="max-width: 300px; max-height: 300px;">`; // Corregido
+            previewContainer.innerHTML = `<img src="${event.target.result}" alt="Previsualización de imagen" style="max-width: 300px; max-height: 300px;">`; 
         };
         reader.readAsDataURL(file);
     } else {

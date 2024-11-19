@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start(); //Iniciar el session para poder verificar si el usuario tiene sesión iniciada
 ?>
 
 <header>
@@ -16,6 +16,7 @@ session_start();
         <div class="content-login-dropdown">
             <a href="../public/login.php">Iniciar Sesión</a>
             <a href="../public/register.php">Registrarse</a>
+            <!-- Si el usuario tiene la sesión iniciada, se muestra un botón para cerrar la sesión -->
             <?php if (isset($_SESSION['USER_ID'])): ?>
                 <a id="logoutEmergencyButton">Cerrar Sesión</a>
             <?php endif; ?>

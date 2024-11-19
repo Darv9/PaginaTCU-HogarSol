@@ -9,6 +9,7 @@ require __DIR__ . '/../../../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Cargar las variables del archivo .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, 'emails.env');
 $dotenv->load();
 
@@ -18,6 +19,7 @@ class MassEmail {
     public function __construct() {
         $this->mail = new PHPMailer(true);
         try {
+            // Configuración del servidor SMTP usando variables de .env
             $this->mail->isSMTP();
             $this->mail->Host = $_ENV['SMTP_HOST'];
             $this->mail->SMTPAuth = filter_var($_ENV['SMTP_AUTH'], FILTER_VALIDATE_BOOLEAN);
@@ -38,7 +40,7 @@ class MassEmail {
             $this->mail->addAddress($to);      // Destinatario
             $this->mail->Subject = $subject;   // Asunto del correo
 
-            // Formato del cuerpo del correo con los estilos solicitados
+            //Plantilla en la que se va a enviar el mensaje personalizado
             $htmlContent = '
             <html>
                 <head>
@@ -76,9 +78,9 @@ class MassEmail {
                         .logo {
                             display: block;
                             margin: 0 auto;
-                            width: 150px;  /* Esto asegura que la imagen tenga un tamaño moderado */
-                            max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
-                            height: auto; /* Mantiene la proporción original de la imagen */
+                            width: 150px;  
+                            max-width: 100%; 
+                            height: auto; 
                         }
 
                         img {
@@ -108,7 +110,7 @@ class MassEmail {
                     <div class="container">
                         <h3>' . $subject . '</h3>
                         <p>' . nl2br($body) . '</p>
-                        <!-- Botón de confirmación (puedes agregar un botón aquí si es necesario) -->
+                        <!-- Botón de confirmación-->
                         <!-- Logo incrustado -->
                         <br>
                         <img src="cid:logo_cid" alt="Logo" class="logo" />

@@ -4,7 +4,7 @@ header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
 
-session_start(); // Esto es necesario para acceder a $_SESSION
+session_start(); 
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['USER_ID'])) {
@@ -27,6 +27,7 @@ if (!isset($_SESSION['USER_ID'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+     <!-- Para incluir la barra del menú lateral -->
     <?php 
         include("sidebarAdmin/sidebar.html"); 
     ?>

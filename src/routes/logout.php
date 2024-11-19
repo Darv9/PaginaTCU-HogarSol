@@ -18,5 +18,5 @@ if (isset($_COOKIE[session_name()])) {
 
 // Redirigir al usuario a la página de login
 header('Location: http://localhost/hogarsolweb/PaginaTCU-HogarSol/public/login.php');
-exit(); // Asegúrate de que no se ejecute más código
+exit(); 
 ?>

@@ -49,7 +49,7 @@
             </ul>
         </section>
     </div>
-    <!-- Nos tramos el footer prefab -->
+    <!-- Nos traemos el footer prefab -->
     <?php 
         include("../public/header-footer/footer.html"); 
     ?>

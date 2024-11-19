@@ -18,12 +18,12 @@ class NewsLetterMail {
         try {
             // Configuración del servidor SMTP usando variables del archivo .env
             $mail->isSMTP();
-            $mail->Host = $_ENV['SMTP_HOST']; // smtp.gmail.com
-            $mail->SMTPAuth = $_ENV['SMTP_AUTH'] == '1'; // True (1) o False (0) según el .env
-            $mail->Username = $_ENV['SMTP_USERNAME']; // correo de usuario
-            $mail->Password = $_ENV['SMTP_PASSWORD']; // contraseña SMTP
+            $mail->Host = $_ENV['SMTP_HOST']; 
+            $mail->SMTPAuth = $_ENV['SMTP_AUTH'] == '1'; 
+            $mail->Username = $_ENV['SMTP_USERNAME']; 
+            $mail->Password = $_ENV['SMTP_PASSWORD']; 
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
-            $mail->Port = $_ENV['SMTP_PORT']; // 587
+            $mail->Port = $_ENV['SMTP_PORT']; 
 
             // Remitente y destinatario
             $mail->setFrom($_ENV['FROM_EMAIL'], $_ENV['FROM_NAME']);
@@ -35,8 +35,8 @@ class NewsLetterMail {
             $mail->Subject = 'Confirmación de Registro para el Boletín Informativo';
 
             // Cargar la plantilla
-            $template = file_get_contents('../mail/templates/newsletterRegister.html'); // Ruta a tu plantilla
-            $body = str_replace(['{{username}}'], [$username], $template); // Reemplazar variables en la plantilla
+            $template = file_get_contents('../mail/templates/newsletterRegister.html'); 
+            $body = str_replace(['{{username}}'], [$username], $template); 
             $mail->Body = $body;
 
             try {
@@ -48,10 +48,9 @@ class NewsLetterMail {
 
             // Enviar el correo
             $mail->send();
-            return true; // Envío exitoso
+            return true; 
         } catch (Exception $e) {
-            // Maneja el error, loguea si es necesario
-            return false; // Indica que hubo un problema
+            return false; 
         }
     }
 }

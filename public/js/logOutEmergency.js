@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         logoutEmergencyButton.addEventListener('click', function(event) {
             event.preventDefault();  // Evitar que el enlace realice la acción predeterminada
 
-            // Mostrar un SweetAlert de confirmación
+            // Mostrar un swal de confirmación
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "Estás a punto de cerrar sesión.",
@@ -20,14 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (result.isConfirmed) {
                     // Si el usuario confirma, hacer la solicitud de cierre de sesión
                     fetch('../src/routes/logout.php', {
-                        method: 'GET',  // O puedes usar 'POST' dependiendo de cómo manejes la solicitud
+                        method: 'GET',  
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Si la respuesta es exitosa (código 200), redirigir a la página de login
-                            window.location.href = '../public/index.php'; // Cambia 'login.php' por la página a la que desees redirigir
+                            window.location.href = '../public/index.php'; 
                         } else {
-                            // Si la respuesta no es exitosa
                             Swal.fire('Error', 'Error al cerrar sesión', 'error');
                         }
                     })

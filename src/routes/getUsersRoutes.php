@@ -14,11 +14,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'getAllUsers') {
         $users = $userController->getAllUsers();
 
         if ($users) {
-            // Aseguramos que los usuarios sean enviados en la clave 'users'
             $response = [
                 'status' => 'success',
                 'message' => 'Usuarios obtenidos con éxito',
-                'users' => $users // Cambiar de 'data' a 'users'
+                'users' => $users 
             ];
         } else {
             $response = [

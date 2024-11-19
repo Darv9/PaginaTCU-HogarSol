@@ -4,7 +4,7 @@ header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
 
-session_start(); // Esto es necesario para acceder a $_SESSION
+session_start(); 
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['USER_ID'])) {
@@ -37,6 +37,7 @@ if (!isset($_SESSION['USER_ID'])) {
         }
         ?>
     </div>
+     <!-- Para incluir la barra del menú lateral -->
     <?php 
         include("sidebarAdmin/sidebar.html"); 
     ?>
@@ -62,7 +63,7 @@ if (!isset($_SESSION['USER_ID'])) {
             </tbody>
         </table>
 
-        <!-- Contenedor de Tarjetas (para pantallas pequeñas) -->
+        <!-- Contenedor de Tarjetas (para responsive) -->
         <div id="userCardsContainer">
             <!-- Las tarjetas de usuario se añadirán dinámicamente aquí -->
         </div>

@@ -62,7 +62,7 @@ function clearErrors() {
 }
 
 function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar el formato del correo electrónico
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
     return re.test(String(email).toLowerCase());
 }
 
@@ -92,12 +92,10 @@ function populateForm(){
             document.getElementById('userRole').value = user.ROLE_ID || '';
             document.getElementById('userStatus').value = user.USER_ACTIVE || '';
         } else {
-            // Si hubo un error (por ejemplo, no se encontró el usuario o la estructura es incorrecta)
             console.error('Error:', data.message || 'Estructura de datos incorrecta');
         }
     })
     .catch(error => {
-        // Manejar cualquier error que pueda ocurrir durante la solicitud
         console.error('Error en la solicitud:', error);
     });
 }

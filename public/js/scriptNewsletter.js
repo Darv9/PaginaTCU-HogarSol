@@ -117,7 +117,6 @@ function registerUserForNewsletter() {
                 });
             }
         } else {
-            // Asegúrate de que el mensaje de error se maneja aquí
             Swal.fire({
                 title: "Error al registrar el usuario!",
                 text: data.message || "Verifique que los datos ingresados sean válidos", // Muestra el mensaje de error del servidor
