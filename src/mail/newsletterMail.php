@@ -2,32 +2,36 @@
 require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
+require __DIR__ . '/../../../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Cargar el archivo .env
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, 'emails.env');
+$dotenv->load();
 
 class NewsLetterMail {
     public function sendConfirmationNewsletterMail($email, $username) {
         $mail = new PHPMailer(true);
 
         try {
-            // Configuración del servidor SMTP
+            // Configuración del servidor SMTP usando variables del archivo .env
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com'; 
-            $mail->SMTPAuth = true;
-            $mail->Username = 'correopruebadani1@gmail.com'; 
-            $mail->Password = 'ouum tjig jsim jccp'; 
+            $mail->Host = $_ENV['SMTP_HOST']; // smtp.gmail.com
+            $mail->SMTPAuth = $_ENV['SMTP_AUTH'] == '1'; // True (1) o False (0) según el .env
+            $mail->Username = $_ENV['SMTP_USERNAME']; // correo de usuario
+            $mail->Password = $_ENV['SMTP_PASSWORD']; // contraseña SMTP
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
-            $mail->Port = 587; 
+            $mail->Port = $_ENV['SMTP_PORT']; // 587
 
             // Remitente y destinatario
-            $mail->setFrom('noreply@hogarsol-web.com', 'Asociación Infantil Hogar Sol');
+            $mail->setFrom($_ENV['FROM_EMAIL'], $_ENV['FROM_NAME']);
             $mail->addAddress($email);
 
             // Contenido del correo
             $mail->isHTML(true);
-            $mail->CharSet = 'UTF-8'; // Establece la codificación UTF-8
+            $mail->CharSet = $_ENV['MAIL_CHARSET']; // UTF-8
             $mail->Subject = 'Confirmación de Registro para el Boletín Informativo';
 
             // Cargar la plantilla
@@ -36,12 +40,13 @@ class NewsLetterMail {
             $mail->Body = $body;
 
             try {
+                // Incluir la imagen del logo
                 $mail->addEmbeddedImage(__DIR__ . '/../../public/images/logo.png', 'logo_cid');
             } catch (Exception $e) {
                 echo 'Error al adjuntar la imagen: ' . $e->getMessage();
             }
-            
 
+            // Enviar el correo
             $mail->send();
             return true; // Envío exitoso
         } catch (Exception $e) {

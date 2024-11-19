@@ -2,9 +2,14 @@
 require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
+require __DIR__ . '/../../../vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+// Cargar las variables del archivo .env
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, 'emails.env');
+$dotenv->load();
 
 class ConfirmationMail {
     public function sendConfirmationEmail($email, $confirmation_code) {
@@ -16,22 +21,22 @@ class ConfirmationMail {
         $mail = new PHPMailer(true);
 
         try {
-            // Configuración del servidor SMTP
+            // Configuración del servidor SMTP usando variables de .env
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com'; 
-            $mail->SMTPAuth = true;
-            $mail->Username = 'correopruebadani1@gmail.com'; 
-            $mail->Password = 'ouum tjig jsim jccp'; 
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
-            $mail->Port = 587;
+            $mail->Host = $_ENV['SMTP_HOST'];  // Ahora se usa desde .env
+            $mail->SMTPAuth = $_ENV['SMTP_AUTH'] == '1';  // Asegúrate de que la variable sea booleana
+            $mail->Username = $_ENV['SMTP_USERNAME'];  // Usuario desde .env
+            $mail->Password = $_ENV['SMTP_PASSWORD'];  // Contraseña desde .env
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = $_ENV['SMTP_PORT'];  // Puerto desde .env
 
             // Remitente y destinatario
-            $mail->setFrom('noreply@hogarsol-web.com', 'Asociación Infantil Hogar Sol');
+            $mail->setFrom($_ENV['FROM_EMAIL'], $_ENV['FROM_NAME']);
             $mail->addAddress($email);
 
             // Configurar el correo como HTML
             $mail->isHTML(true);
-            $mail->CharSet = 'UTF-8';
+            $mail->CharSet = $_ENV['MAIL_CHARSET'];  // Charset desde .env
             $mail->Subject = 'Confirmación de Registro';
 
             // Genera la URL dinámica
@@ -51,7 +56,7 @@ class ConfirmationMail {
                 </td>
             </tr>
         </table>';
-        $body = str_replace('{{button}}', $button, $template);
+            $body = str_replace('{{button}}', $button, $template);
 
             $mail->Body = $body;
 

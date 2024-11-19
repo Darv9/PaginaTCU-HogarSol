@@ -3,9 +3,14 @@
 require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
+require __DIR__ . '/../../../vendor/autoload.php';
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__, 'emails.env');
+$dotenv->load();
 
 class MassEmail {
     private $mail;
@@ -13,17 +18,16 @@ class MassEmail {
     public function __construct() {
         $this->mail = new PHPMailer(true);
         try {
-            // Configuración SMTP
             $this->mail->isSMTP();
-            $this->mail->Host = 'smtp.gmail.com';  // Configura tu servidor SMTP
-            $this->mail->SMTPAuth = true;
-            $this->mail->Username = 'correopruebadani1@gmail.com'; // Usuario SMTP
-            $this->mail->Password = 'ouum tjig jsim jccp';           // Contraseña SMTP
-            $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $this->mail->Port = 587;
-            $this->mail->setFrom('noreply@hogarsol-web.com', 'Asociación Infantil Hogar Sol');
-            $this->mail->isHTML(true);  // Permitir HTML en el mensaje
-            $this->mail->CharSet = 'UTF-8';  // Asegurar que se usen caracteres UTF-8
+            $this->mail->Host = $_ENV['SMTP_HOST'];
+            $this->mail->SMTPAuth = filter_var($_ENV['SMTP_AUTH'], FILTER_VALIDATE_BOOLEAN);
+            $this->mail->Username = $_ENV['SMTP_USERNAME'];
+            $this->mail->Password = $_ENV['SMTP_PASSWORD'];
+            $this->mail->SMTPSecure = $_ENV['SMTP_SECURE'];
+            $this->mail->Port = $_ENV['SMTP_PORT'];
+            $this->mail->setFrom($_ENV['FROM_EMAIL'], $_ENV['FROM_NAME']);
+            $this->mail->isHTML(true);
+            $this->mail->CharSet = 'UTF-8';
         } catch (Exception $e) {
             error_log("Error al configurar PHPMailer: " . $e->getMessage());
         }
